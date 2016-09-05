@@ -1,0 +1,47 @@
+/*
+  (c) Raffaele Ficcadenti 
+  Maggio 2016
+  raffaele.ficcadenti@gmail.com
+*/
+
+/* Footer */
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+
+  opacity: 0.8;
+  padding: 1px;
+  background-color: #357ebd;
+  color: #fff;
+}
+
+
+footer h2, footer h3 {
+ padding: 1px;
+ font-weight: bold;
+ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ padding: 0;
+ background-color: #357ebd;
+ color: #ffffff;
+ -webkit-text-shadow:  5px 5px 5px #000;
+ text-shadow:  5px 5px 5px #000;
+ left:0;
+}
+
+footer h5{
+ color: #0000e6;
+}
+
+footer a, footer a:hover {color: #ffff00;}
+#footer-copy {
+ padding: 10px 0 0 0;
+ border-top: 1px solid #fff;
+}
+
+.fixed {
+	 position: fixed; width: 100%; z-index:2; /* posizione fissa*/
+	 bottom: 0;
+}

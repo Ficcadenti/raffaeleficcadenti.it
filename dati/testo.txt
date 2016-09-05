@@ -1,0 +1,17 @@
+Apache HTTP Server, o più comunemente Apache, è il nome della piattaforma server Web sviluppata dalla Apache Software Foundation.
+È la piattaforma server Web modulare più diffusa, in grado di operare su una grande varietà di sistemi operativi, tra cui UNIX/Linux, Microsoft Windows e OpenVMS.
+La base di partenza per applicazioni WEB.
+
+PHP (acronimo ricorsivo di "PHP: Hypertext Preprocessor", preprocessore di ipertesti; originariamente acronimo di "Personal Home Page") è un linguaggio di scripting interpretato, originariamente concepito per la programmazione di pagine web dinamiche. 
+L'interprete PHP è un software libero distribuito sotto la PHP License. Attualmente è principalmente utilizzato per sviluppare applicazioni web lato server, 
+ma può essere usato anche per scrivere script a riga di comando o applicazioni stand-alone con interfaccia grafica.
+
+MySQL o Oracle MySQL è un Relational database management system (RDBMS) composto da un client a riga di comando e un server. 
+Entrambi i software sono disponibili sia per sistemi Unix e Unix-like che per Windows; le piattaforme principali di riferimento sono Linux e Oracle Solaris.
+I sistemi e i linguaggi di programmazione che supportano MySQL sono molto numerosi: ODBC, Java, Mono, .NET, PHP, Python e molti altri.
+
+Bootstrap è una raccolta di strumenti liberi per la creazione di siti e applicazioni per il Web. Essa contiene modelli di progettazione basati su HTML e CSS, 
+sia per la tipografia, che per le varie componenti dell'interfaccia, come moduli, pulsanti e navigazione, così come alcune estensioni opzionali di JavaScript.
+
+In informatica Java è un linguaggio di programmazione orientato agli oggetti a tipizzazione statica, 
+specificatamente progettato per essere il più possibile indipendente dalla piattaforma di esecuzione.
