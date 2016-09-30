@@ -81,6 +81,14 @@
 	$IC_MUSICA_STR="Music";
 	$IC_LEGGI_TUTTO_STR="Read everything";
 
+	/******* SVILUPPI Section  *******/
+	$SVILUPPI_TITOLO_STR="My development";
+	$SVILUPPI_BTN_VISUALIZZA_STR="Show all";
+	$SVILUPPI_ALL_STR="All my developments";
+	$SVILUPPI_PHP_STR="PHP5 training";
+	$SVILUPPI_JAVA_STR="Java training";
+	$SVILUPPI_PERL_STR="Perl examples";
+
 		/******* ADMINISTRATOR *******/
 	$ADMIN_SCRIVIMI_STR="Wrtite me";
 	$ADMIN_NAVIGA_STR="Good navigation";

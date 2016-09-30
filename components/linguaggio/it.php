@@ -83,6 +83,14 @@
 	$IC_MUSICA_STR="Musica";
 	$IC_LEGGI_TUTTO_STR="Leggi tutto";
 
+	/******* SVILUPPI Section  *******/
+	$SVILUPPI_TITOLO_STR="I miei sviluppi";
+	$SVILUPPI_BTN_VISUALIZZA_STR="Visualizza tutto";
+	$SVILUPPI_ALL_STR="Tutti i miei sviluppi";
+	$SVILUPPI_PHP_STR="Corso di PHP5";
+	$SVILUPPI_JAVA_STR="Corso di Java";
+	$SVILUPPI_PERL_STR="Esempi in Perl";
+
 	/******* ADMINISTRATOR Section  *******/
 	$ADMIN_SCRIVIMI_STR="Scrivimi";
 	$ADMIN_NAVIGA_STR="Buona navigazione";

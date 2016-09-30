@@ -46,11 +46,11 @@
                       <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>>Cartoni 70,80</a></li>
                      </ul>
                     </li>
-                    <li><a href=<?php echo "'".$local_host."components/links.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_LINK; ?></a></li>
+                    <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_LINK; ?></a></li>
                     <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_NEWS; ?></a></li>
                     <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_BLOG; ?></a></li>
                     <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_FORUM; ?></a></li>
-                    <li><a href=<?php echo "'".$local_host."components/contatti.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_CONTATTI; ?></a></li>
+                    <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_CONTATTI; ?></a></li>
                     <li>
                         <select  class="selectpicker centrato_l" id="selectLang" data-width="140px" data-style="btn btn-primary  btn-large btn-block" >
                           <option data-content=<?php echo '"<img src=\''.$local_host.'media/flags/it_resize.png\'>  <span style=\'display:inline-block; width:100px;\'> Italiano</span>"' ?> <?php
