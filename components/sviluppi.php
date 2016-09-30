@@ -38,10 +38,9 @@
        <ul class="list-group servizi">
         <li class="list-group-item servizi-titolo"><h4>Git HUB</h4></li>
         <li class="list-group-item servizi-prezzo"><strong>Tutti i miei sviluppi</strong></li>
-        <li class="list-group-item servizi-opzione">Dapibus ac facilisis in</li>
-        <li class="list-group-item servizi-opzione">Morbi leo risus</li>
-        <li class="list-group-item servizi-opzione">Porta ac consectetur ac</li>
-        <li class="list-group-item servizi-opzione">Vestibulum at eros</li>
+        <li class="list-group-item servizi-opzione"><a target="_blank" href="https://github.com/Ficcadenti/php-example">Corso di PHP5</a></li>
+        <li class="list-group-item servizi-opzione"><a target="_blank" href="https://github.com/Ficcadenti/corso-java">Corso Java</a></li>
+        <li class="list-group-item servizi-opzione"><a target="_blank" href="https://github.com/Ficcadenti/perl-example">Esempi Perl</a></li>
         <li class="list-group-item servizi-footer"><button class="btn btn-raised ripple-effect btn-primary" type="button">Visualizza il resto</button></li>
       </ul>
       </div>
