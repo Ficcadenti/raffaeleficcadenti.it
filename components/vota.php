@@ -34,7 +34,7 @@
                   success: function(res)
                   {
                     var voti = JSON.parse(res);
-                    window.alert(res);
+                    //window.alert(res);
 
                     $("#eccellente").attr("style","width: "+voti.eccellente+"%");
                     $("#eccellente").html(parseInt(voti.eccellente)+" %");

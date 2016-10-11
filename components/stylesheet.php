@@ -28,6 +28,10 @@
 	{
 	    	$local_host="../";
 	}
+	else if (strpos($from_page, 'corso_php') !== false) 
+	{
+	    	$local_host="../";
+	}
 	else /* DEFAULT */
 	{
 		$local_host="./";

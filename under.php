@@ -84,33 +84,12 @@
     <!-- Contenuti (griglia) -->
     <div class="container">
 
-      <!-- cv -->
-      <a name="curriculum"></a>
-      <?php
-        include("components/cv.php");
-      ?>
-
       <!-- under costruction -->
       <?php
         include("components/undercostruction.php");
       ?>
 
-      <a name="miei_sviluppi"></a>
-      <!-- scritta animata -->
-      <br><br>
-      <section id="Welcome">
-        <div class="cssload-loader">...Work in progress...</div>
-      </section>
-
-      <!-- sviluppi -->
-      <?php
-        include("components/sviluppi.php");
-      ?>
-
-      <!-- qrcode -->
-      <?php
-        include("components/qrcode.php");
-      ?>
+      
       <br><br><br><br>
       <br><br><br><br>
 

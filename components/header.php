@@ -46,7 +46,7 @@
                       <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>>Cartoni 70,80</a></li>
                      </ul>
                     </li>
-                    <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_LINK; ?></a></li>
+                    <li><a href=<?php echo "'".$local_host."components/links.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_LINK; ?></a></li>
                     <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_NEWS; ?></a></li>
                     <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_BLOG; ?></a></li>
                     <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>><?php echo $MENU_STR_FORUM; ?></a></li>

@@ -109,7 +109,7 @@ I sistemi e i linguaggi di programmazione che supportano MySQL sono molto numero
                 </li>
 
                 <li class="media">
-                 <a href="http://www.mysql.it" target="_blank"><img class="media-object pull-left img-thumbnail img-responsive" hspace="15" width="150" height="40" src="../media/link/mongodb.png" ></a>
+                 <a href="http://www.mongodb.com" target="_blank"><img class="media-object pull-left img-thumbnail img-responsive" hspace="15" width="150" height="40" src="../media/link/mongodb.png" ></a>
                  <div class="media-body">
                  <h5 class="media-heading"><span> <strong>MongoDB</strong></span></h5>
                  <p></p>    
@@ -147,6 +147,16 @@ specificatamente progettato per essere il più possibile indipendente dalla piat
                  <div class="media-body">
                  <h5 class="media-heading"><span> <strong>jQuery</strong></span></h5>
                  <p></p>    
+                 </div>
+                </li>
+
+                <li class="media">
+                 <a href="http://www.w3schools.com/" target="_blank"><img class="media-object pull-left img-thumbnail img-responsive" hspace="15" width="150" height="150" src="../media/link/w3schools.png" ></a>
+                 <div class="media-body">
+                 <h5 class="media-heading"><span> <strong>w3schools</strong></span></h5>
+                 <p>W3Schools is a popular web site for learning web technologies online. Content includes tutorials and references relating to HTML, CSS, JavaScript, PHP, SQL, Bootstrap, and jQuery. It receives more than 10 million unique visitors monthly.
+Created in 1998, its name is derived from the World Wide Web, but is not affiliated with the W3C (World Wide Web Consortium).[3] It is run by Refsnes Data in Norway.[1] W3Schools presents thousands of code examples. By using an online editor, 
+readers can edit examples and execute.</p>    
                  </div>
                 </li>
 

@@ -9,8 +9,8 @@
   */
 
   $servername   = "10.10.10.151";
-  $dbservername = "10.10.10.151";
-  $username     = "sql981244";
+  $dbservername = "89.46.111.21";
+  $username     = "Sql981244";
   $password     = "a876grz637";
   $dbname       = "Sql981244_1";
 ?>
