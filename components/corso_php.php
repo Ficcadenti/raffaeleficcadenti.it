@@ -89,7 +89,7 @@
         <div class="row">
           <div class="col-sm-12 panel-carousel">
 
-            <h2><strong> Repository per Lezioni/esempi PHP </strong></h2>
+            <h4><strong> Repository per Lezioni/esempi PHP </strong></h2>
             (c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br>
             Ho cercato di raccogliere in questo repository, le basi della programmazione PHP.
             Per ogni correzione o suggerimento, non esitate a scrivermi.
