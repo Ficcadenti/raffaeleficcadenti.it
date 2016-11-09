@@ -12,7 +12,7 @@
   <section id="footer-navigazione">
     <div class="row no-gutters">
       <div class="col-sm-4">
-          <h3><?php echo $SEGUIMI_STR; ?></h3><br><br>
+          <h3 class="myfont"><?php echo $SEGUIMI_STR; ?></h3><br><br>
           <div class="col-md-12">
                       <ul class="social-network social-circle">
                           <li><a href="#" class="icoRss disabled" title="Rss"><i class="fa fa-rss"></i></a></li>
@@ -25,7 +25,7 @@
       </div> <!-- /col-sm-4 -->
 
       <div class="col-sm-4">
-       <h2><?php echo $ULTIMI_POST_STR; ?></h2>
+       <h3 class="myfont"><?php echo $ULTIMI_POST_STR; ?></h3>
        <ul class="media-list">
         <li class="media">
          <img class="media-object pull-left img-thumbnail img-responsive" src="media/post/post1.png">
@@ -52,7 +52,7 @@
       </div><!-- /col-sm-4 -->
 
       <div class="col-sm-4">
-         <h3><?php echo $CONTATTI_STR; ?></h3>
+         <h3 class="myfont"><?php echo $CONTATTI_STR; ?></h3>
          <address>
           <h5><strong>Raffaele Ficcadenti</strong><br></h5>
           Via Castellamonte 82<br>
