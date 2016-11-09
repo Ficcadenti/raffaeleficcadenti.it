@@ -90,6 +90,7 @@
 	$SVILUPPI_BTN_VISUALIZZA_STR="Show all";
 	$SVILUPPI_ALL_STR="All my developments";
 	$SVILUPPI_PHP_STR="PHP5 training";
+	$SVILUPPI_JS_STR="JavaScript training";
 	$SVILUPPI_JAVA_STR="Java training";
 	$SVILUPPI_PERL_STR="Perl examples";
 
