@@ -9,6 +9,10 @@
 ************************************************************************** 
 -->
 <?php
+	/******* INTRO Section  *******/
+	$INTRO_STR="For some of us, write computer programs is an exciting game. <br>
+             A program is a construction of thoughts. It has no material costs,
+             It has no weight and grows effortlessly as we type on the keyboard.";
 
 	/******* CV Section  *******/
 	$CV_TITOLO_STR="My curriculum";

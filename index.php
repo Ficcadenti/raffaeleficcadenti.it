@@ -88,6 +88,12 @@
     <!-- Contenuti (griglia) -->
     <div class="container">
 
+      <!-- intro -->
+      <a name="intro"></a>
+      <?php
+        include("components/intro.php");
+      ?>
+
       <!-- cv -->
       <a name="curriculum"></a>
       <?php

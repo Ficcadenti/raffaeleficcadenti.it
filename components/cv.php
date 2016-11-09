@@ -20,7 +20,6 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body animated zoomOut">
-
                         <div class="row">
                             <div class="col-sm-12 lead text-center">
                                 <?php echo $CV_SLOGAN_STR; ?>

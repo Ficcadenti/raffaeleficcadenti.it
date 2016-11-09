@@ -25,6 +25,7 @@ Raffaele.
   <li><strong>LEZIONE N. 0</strong> - Per iniziare.
     <ul>
       <br>
+      <li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/ascii_tab.html" target="_blank">ascii_tab.html</a></b>: ASCII/ISO 8859-1 (Latin-1).</li>
       <li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/phpinfo.php" target="_blank">phpinfo.php</a></b>: Un semplice script per info sul php installato.</li>
       <li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/esempio_01.php" target="_blank">esempio_01.php</a></b>: Un semplice script introduttivo.</li>
       <br>
@@ -229,7 +230,10 @@ Raffaele.
     <ul>
       <br>
       <li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_55.php" target="_blank">esempio_55.php</a></b>: Inviare e-mail.</li>
-      <li><b><a href=".APPENDICE/esempio_56.php" target="_blank">esempio_56.php</a></b>: Upload file.</li>
+      <li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_55a.php" target="_blank">esempio_55a.php</a></b>: Classe per inviare e-mail.</li>
+      <li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_56.php" target="_blank">esempio_56.php</a></b>: Upload file.</li>
+      <li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_56a.php" target="_blank">esempio_56a.php</a></b>: Classe per upload file.</li>
+      <li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_57.php" target="_blank">esempio_57.php</a></b>: Buffering.</li>
       <br>
     </ul>
   </li>

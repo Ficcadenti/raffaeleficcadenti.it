@@ -9,6 +9,11 @@
 ************************************************************************** 
 -->
 <?php
+	/******* INTRO Section  *******/
+	$INTRO_STR="Per alcuni di noi, scrivere programmi per computer è un gioco appassionante.<br>
+            Un programma è una costruzione di pensieri. Non ha costi di materiali, 
+            non ha peso e cresce senza sforzo man mano che digitiamo sulla tastiera.";
+
 	/******* CV Section  *******/
 	$CV_TITOLO_STR="Il mio curriculum";
 	$CV_SLOGAN_STR="<p> Lascia fare a me: mi prenderò cura delle tue esigenze software e della tua immagine aziendale, portando una ventata di freschezza e novità al tuo business.</p><br>

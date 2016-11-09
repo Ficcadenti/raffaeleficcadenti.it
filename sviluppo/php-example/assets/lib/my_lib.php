@@ -17,6 +17,7 @@
 	#
 -->
 <?php
+	
 	$mysql_data_type_hash = array(
 	    1=>'tinyint',
 	    2=>'smallint',
@@ -36,6 +37,7 @@
 	    254=>'char',
 	    246=>'decimal'
 	);
+
 
 	function println($str="") /* stampa riga incluso CR-LF*/
 	{
@@ -196,6 +198,12 @@
 		}
 		print("</hr></p>\n");
 		$calls++;
+	}
+
+	function getmicrotime()
+	{
+		list($usec, $sec) = explode(" ",microtime()) ;
+		return ((float)$usec + (float)$sec) ;
 	}
 		
 
