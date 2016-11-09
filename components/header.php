@@ -59,10 +59,8 @@
                                   echo "selected ";
                             }
                           ?>
-
-                          
-
-                          value="?lang=it">Italiano></option>
+                          value="?lang=it">Italiano>
+                          </option>
 
                           <option data-content=<?php echo '"<img src=\''.$local_host.'media/flags/en_resize.png\'>  <span style=\'display:inline-block; width:100px;\'> English</span>"' ?> <?php
                             if ($lang=="en")
@@ -70,7 +68,8 @@
                                   echo "selected ";
                             }
                           ?>
-                          value="?lang=en">English></option>
+                          value="?lang=en">English>
+                          </option>
                         </select>
                     </li>
               </ul>

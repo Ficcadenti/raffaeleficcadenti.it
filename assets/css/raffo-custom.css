@@ -42,6 +42,11 @@ a:focus, a:active, a:hover
   font-family: 'Architects Daughter', cursive; 
 }
 
+h1,h2,h3,h4,h5
+{
+  font-family: 'Architects Daughter', cursive; 
+}
+
 /*.modal {
     overflow-y: auto;
 }
@@ -237,6 +242,7 @@ a:focus, a:active, a:hover
 .header-sezione {
   border-bottom: 2px solid #357ebd;
   color: #000; /* #fff */
+  font-family: 'Architects Daughter', cursive;
 }
 
 @media screen and (min-width: 768px) 
@@ -253,6 +259,7 @@ a:focus, a:active, a:hover
     position:fixed;
     width:100%;
     z-index:10;
+    font-family: 'Architects Daughter', cursive;
 }
 
 /* Lavoro in evidenza */
