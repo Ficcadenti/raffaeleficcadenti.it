@@ -13,4 +13,5 @@
   $username     = "root";
   $password     = "raffo";
   $dbname       = "Sql981244_1";
+  $dbname_php   = "Sql981244_1";
 ?>

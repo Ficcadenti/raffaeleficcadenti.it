@@ -16,6 +16,7 @@
 	#
 -->
 <?php
+	include ("../../../config/configure.php");
 	$db_connection=FALSE;
 	$name_db="";
 	$name_tab="";
@@ -170,7 +171,7 @@
 		<?php
 			$CONNECTED=false;
 			$record=array();
-			$name_db="phpexample";
+			$name_db=$dbname_php;
 			$name_tab="tab_01";
 			$tab_col=array(
 					"Nome" => "",
@@ -188,7 +189,7 @@
 				try
 				{
 					$CONNECTED = true;
-					$db_connection = new mysqli("localhost","root","raffo",$name_db);
+					$db_connection = new mysqli($dbservername,$username,$password,$name_db);
 					
 					println("Connessione MySQLi OK!!!!");
 					println();

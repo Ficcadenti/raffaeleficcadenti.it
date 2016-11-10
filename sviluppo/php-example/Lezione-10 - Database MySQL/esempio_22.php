@@ -16,6 +16,7 @@
 	#
 -->
 <?php
+	include ("../../../config/configure.php");
 	$db_connection=FALSE;
 	$name_db="";
 	$name_tab="";
@@ -104,7 +105,7 @@
 			try
 			{
 				$CONNECTED = true;
-				$db_connection = new mysqli("localhost","root","raffo");
+				$db_connection = new mysqli($dbservername,$username,$password,$name_db);
 				
 				println("Connessione MySQLi OK!!!!");
 				println();
@@ -162,7 +163,7 @@
 
 				$name_db=array();
 				$name_table=array();
-				$name_db[]="phpexample";
+				$name_db[]=$dbname_php;
 				foreach($name_db as $value) 
 				{
 					println("-> Database: $value");		
