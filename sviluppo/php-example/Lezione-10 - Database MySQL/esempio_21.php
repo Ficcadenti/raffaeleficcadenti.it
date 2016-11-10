@@ -293,6 +293,10 @@
 				print("</form>");			
 				print("</div>");
 			}
+			else
+			{
+				println("Errore select!!!");
+			}
 		?>
 			
 		<?php

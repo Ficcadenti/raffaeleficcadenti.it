@@ -123,44 +123,48 @@
 				$result = $db_connection->query("SHOW DATABASES");
 				$name_db=array();
 				$name_table=array();
-				while($row = $result->fetch_assoc())
+				if($result)
 				{
-					$name_db[]=$row['Database'];
-				}
 
-				foreach($name_db as $value) 
-				{
-					println("$value");		
-					$result = $db_connection->query("SHOW TABLES FROM $value");
-					if($result)
+					while($row = $result->fetch_assoc())
 					{
-						while($row = $result->fetch_assoc())
+						$name_db[]=$row['Database'];
+					}
+
+					foreach($name_db as $value) 
+					{
+						println("$value");		
+						$result = $db_connection->query("SHOW TABLES FROM $value");
+						if($result)
 						{
-								foreach ($row as $key => $value) 
-								{
-									$name_table[]=$value;
-									println("-> Tabella: $value");
-								}
+							while($row = $result->fetch_assoc())
+							{
+									foreach ($row as $key => $value) 
+									{
+										$name_table[]=$value;
+										println("-> Tabella: $value");
+									}
+							}
 						}
 					}
-				}
-				foreach($name_db as $value) 
-				{
-					println("$value");		
-					$result = $db_connection->query("SHOW TABLES FROM $value");
-					if($result)
+					foreach($name_db as $value) 
 					{
-						while($row = $result->fetch_assoc())
+						println("$value");		
+						$result = $db_connection->query("SHOW TABLES FROM $value");
+						if($result)
 						{
-								foreach ($row as $key => $value) 
-								{
-									$name_table[]=$value;
-									println("-> Tabella: $value");
-								}
+							while($row = $result->fetch_assoc())
+							{
+									foreach ($row as $key => $value) 
+									{
+										$name_table[]=$value;
+										println("-> Tabella: $value");
+									}
+							}
 						}
 					}
+				
 				}
-
 				$name_db=array();
 				$name_table=array();
 				$name_db[]=$dbname_php;
