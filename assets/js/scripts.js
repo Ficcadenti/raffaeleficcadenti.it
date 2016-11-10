@@ -206,7 +206,7 @@ function captionMoveOut() {
 })(jQuery);
 
     // add the animation to the popover
-    $('a[rel=popover]').popover().click(function(e) {
+    $('a[data-toggle=popover]').popover().click(function(e) {
         e.preventDefault();        
          var open = $(this).attr('data-easein');
         if(open == 'shake') {

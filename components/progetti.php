@@ -18,9 +18,9 @@
         <div class="col-sm-3">
          <div class="box-progetto">
             <h3>A.S.I.</h3>
-            <p class="text-center"><img src="media/asi.jpg" class="img-thumbnail img-responsive"></p>
+            <p class="text-center"><img alt="asi.jpg" src="media/asi.jpg" class="img-thumbnail img-responsive"></p>
             <p>Agenzia Spaziale Italiana.</p>
-                <a data-original-title="A.S.I." data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" rel="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/asdc.html").'"'; ?>
+                <a data-original-title="A.S.I." data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" data-toggle="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/asdc.html").'"'; ?>
                 >
                 <span class="glyphicon glyphicon-eye-open"></span> Show</a>
          </div>
@@ -29,9 +29,9 @@
         <div class="col-sm-3">
          <div class="box-progetto">
           <h3>Telecom Sparkle</h3>
-          <p class="text-center"><img src="media/sparkle.jpg" class="img-thumbnail img-responsive"></p>
+          <p class="text-center"><img alt="sparkle.jpg" src="media/sparkle.jpg" class="img-thumbnail img-responsive"></p>
           <p>Telecom Sparkle.</p>
-                <a data-original-title="Telecom Sparkle." data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" rel="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/sparkle.html").'"'; ?> >
+                <a data-original-title="Telecom Sparkle." data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" data-toggle="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/sparkle.html").'"'; ?> >
                 <span class="glyphicon glyphicon-eye-open"></span> Show</a>
          </div>
         </div><!-- /.col-sm-4 -->
@@ -39,9 +39,9 @@
         <div class="col-sm-3">
          <div class="box-progetto">
           <h3>e-Tech</h3>
-          <p class="text-center"><img src="media/e-tech.png" class="img-thumbnail img-responsive"></p>
+          <p class="text-center"><img alt="e-tech.jpg" src="media/e-tech.png" class="img-thumbnail img-responsive"></p>
           <p>Societa di consulenza e sviluppo software</p>
-                <a data-original-title="e-Tech s.r.l." data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" rel="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/e-tech.html").'"'; ?> >
+                <a data-original-title="e-Tech s.r.l." data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" data-toggle="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/e-tech.html").'"'; ?> >
                 <span class="glyphicon glyphicon-eye-open"></span> Show</a>
          </div>
         </div><!-- /.col-sm-4 -->
@@ -49,9 +49,9 @@
         <div class="col-sm-3">
          <div class="box-progetto">
           <h3>HP</h3>
-          <p class="text-center"><img src="media/hp.png" class="img-thumbnail img-responsive"></p>
+          <p class="text-center"><img alt="hp.png" src="media/hp.png" class="img-thumbnail img-responsive"></p>
           <p>HP.</p>
-                <a data-original-title="HP" data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" rel="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/hp.html").'"'; ?> >
+                <a data-original-title="HP" data-animation="false" data-easein="flipBounceXIn" href="#" class="btn btn-primary btn-large btn-block" data-toggle="popover" data-placement="top" data-html="true" data-content=<?php echo '"'.file_get_contents("./components/hp.html").'"'; ?> >
                 <span class="glyphicon glyphicon-eye-open"></span> Show</a>
          </div>
         </div><!-- /.col-sm-4 -->

@@ -28,10 +28,10 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <a href="./dati/CVRaffaeleFiccadenti.pdf" target="_blank"><img src="media/PDF-icon.png"> Curriculum Vitae (PDF)</a>
+                                <a href="./dati/CVRaffaeleFiccadenti.pdf" target="_blank"><img alt="PDF-icon.png" src="media/PDF-icon.png"> Curriculum Vitae (PDF)</a>
                             </div>
                             <div class="col-sm-6">
-                                <a href="./dati/CVRaffaeleFiccadenti.doc"><img src="media/WORD-icon.png">Curriculum Vitae (Word)</a>
+                                <a href="./dati/CVRaffaeleFiccadenti.doc"><img alt="WORD-icon.png" src="media/WORD-icon.png">Curriculum Vitae (Word)</a>
                             </div>
                         </div>
                     </div>

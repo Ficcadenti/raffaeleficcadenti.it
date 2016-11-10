@@ -68,7 +68,7 @@
     </div> <!-- /row -->
   </section> <!-- /section -->
 
-  <section id="footer-copy">
+  <div id="footer-copy">
     <div class="row no-gutters">
       <div class="col-sm-12">
         <p class="rigth">&copy; <?php echo $MESE_STR; ?> 2016 Raffaele Ficcadenti. &middot; 
@@ -78,6 +78,6 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
 
 </footer>

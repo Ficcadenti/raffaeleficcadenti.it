@@ -15,7 +15,7 @@
 	<br>
 	<div class="row">
 	  <div class="centrato_h">
-	    <p><img src=<?php echo '"'.$local_host.'media/etichetta2.png"'?> class="img-thumbnail img-responsive"></p>
+	    <p><img alt="etichetta2.png" src=<?php echo '"'.$local_host.'media/etichetta2.png"'?> class="img-thumbnail img-responsive"></p>
 	  </div><!-- /.col-sm-4 -->
 	</div>
 </section><!-- footer -->

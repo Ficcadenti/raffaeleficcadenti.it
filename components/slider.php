@@ -14,7 +14,7 @@
       <ul class="slides">
 
        <li>
-         <img src="media/slider/flex-1.jpg">
+         <img alt="flex-1.jpg" src="media/slider/flex-1.jpg">
          <div class="flex-caption">
            <p class="flex-caption-text">
              <span>Raffaele Ficcadenti</span><br>
@@ -24,7 +24,7 @@
        </li>
 
        <li>
-         <img src="media/slider/flex-2.jpg">
+         <img alt="flex-2.jpg" src="media/slider/flex-2.jpg">
          <div class="flex-caption" >
            <p class="flex-caption-text " >
              <span><?php echo $SLIDER_1_STR ?></span><br>
@@ -34,7 +34,7 @@
        </li>
 
        <li>
-         <img src="media/slider/flex-3.jpg">
+         <img alt="flex-3.jpg" src="media/slider/flex-3.jpg">
          <div class="flex-caption">
            <p class="flex-caption-text">
              <span><?php echo $SLIDER_2_STR ?></span><br>
@@ -44,7 +44,7 @@
        </li>
 
        <li>
-         <img src="media/slider/flex-4.jpg">
+         <img alt="flex-4.jpg" src="media/slider/flex-4.jpg">
          <div class="flex-caption ">
            <p class="flex-caption-text">
              <span><?php echo $SLIDER_3_STR ?></span><br>
@@ -54,7 +54,7 @@
        </li>
 
        <li>
-         <img src="media/slider/flex-6.jpg">
+         <img alt="flex-6.jpg" src="media/slider/flex-6.jpg">
          <div class="flex-caption">
            <p class="flex-caption-text">
              <span><?php echo $SLIDER_4_STR ?></span><br>
@@ -64,7 +64,7 @@
        </li>
 
        <li>
-         <img src="media/slider/flex-8.jpg">
+         <img alt="flex-8.jpg" src="media/slider/flex-8.jpg">
          <div class="flex-caption">
            <p class="flex-caption-text">
              <span><?php echo $SLIDER_5_STR ?></span><br>
@@ -74,7 +74,7 @@
        </li>
 
        <li>
-         <img src="media/slider/flex-9.jpg">
+         <img alt="flex-9.jpg" src="media/slider/flex-9.jpg">
          <div class="flex-caption">
            <p class="flex-caption-text">
              <span><?php echo $SLIDER_6_STR ?></span><br>
@@ -104,7 +104,7 @@
        </li>
 
        <li>-->
-         <img src="media/slider/flex-12.jpg">
+         <img alt="flex-12.jpg" src="media/slider/flex-12.jpg">
          <div class="flex-caption">
            <p class="flex-caption-text">
              <span>Web Server Manager</span><br>

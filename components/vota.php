@@ -144,13 +144,13 @@
       </div>
 
       <!-- Sezione per il voto -->
-     	<div class="modal fade" id="vote" tabindex="-1" role="dialog" aria-labelledby="voteLabel" aria-hidden="true">
+     	<div class="modal fade" id="vote" tabindex="-1" role="dialog" aria-labelledby="voteLabel_vota" aria-hidden="true">
         <div class="modal-dialog">
           <div class="panel-vote panel-primary">
 
             <div class="panel-heading">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="removeStrVoto();">X</button>
-              <h4 class="panel-title" id="voteLabel"><span class="glyphicon glyphicon-arrow-right"></span> <?php echo $VOTA_DOMANDA_STR ?></h4>
+              <h4 class="panel-title" id="voteLabel_vota"><span class="glyphicon glyphicon-arrow-right"></span> <?php echo $VOTA_DOMANDA_STR ?></h4>
             </div>
 
             <div class="modal-body">
@@ -211,13 +211,13 @@
       </div>  <!-- /vote -->
 
       <!-- Sezione per i risultati -->
-      <div class="modal fade" id="result" tabindex="-1" role="dialog" aria-labelledby="voteLabel" aria-hidden="true">
+      <div class="modal fade" id="result" tabindex="-1" role="dialog" aria-labelledby="voteLabel_result" aria-hidden="true">
         <div class="modal-dialog">
           <div class="panel-vote panel-primary">
 
             <div class="panel-heading">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-              <h4 class="panel-title" id="voteLabel"><span class="glyphicon glyphicon-arrow-right"></span> <?php echo $VOTA_RES_STR?></h4>
+              <h4 class="panel-title" id="voteLabel_result"><span class="glyphicon glyphicon-arrow-right"></span> <?php echo $VOTA_RES_STR?></h4>
             </div>
 
             <div class="row results" >
@@ -248,7 +248,7 @@
                           </div>
                       </div>
 
-                      <spam id="totali">ciao</spam>
+                      <p id="totali">ciao</p>
                       <div class="progress">
                           <div id="tot_eccellente" class="progress-bar progress-bar-success">
                           </div>

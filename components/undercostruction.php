@@ -8,13 +8,13 @@
   Descr:  
 ************************************************************************** 
 -->
-<section id="undercostruction">
+<div id="undercostruction">
 	<div class="row">
 	  <div class="centrato_uc">
-	    <p class="text-center"><img src=<?php echo '"'.$local_host.'media/under-construction.png"'?> class="img-responsive"></p>
+	    <p class="text-center"><img alt="under-construction.png" src=<?php echo '"'.$local_host.'media/under-construction.png"'?> class="img-responsive"></p>
 	  </div><!-- /.col-sm-4 -->
 	</div>
-</section><!-- undercostruction -->
+</div><!-- undercostruction -->
 
 
 

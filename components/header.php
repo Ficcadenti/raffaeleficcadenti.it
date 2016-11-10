@@ -28,12 +28,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <span class="caret"></span></a>
                      <ul class="dropdown-menu">
                       <li><a href=<?php echo "'".$local_host."?lang=".$lang."'"; ?>>Home</a></li>
-                      <li><a href="#curriculum">Curriculum</a></li>
+                      <li><a href="#curriculum_anc">Curriculum</a></li>
                       <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>>Progetti</a></li>
                       <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."'"; ?>>I miei lavori</a></li>
-                      <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."#miei_sviluppi'"; ?> >I miei sviluppi</a></li>
-                      <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."#qrcode'"; ?> >Il mio QRCode</a></li>
-                      <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."#vota'"; ?> >Vota</a></li>
+                      <li><a href=<?php echo "'".$local_host."under.php?lang=".$lang."#miei_sviluppi_anc'"; ?> >I miei sviluppi</a></li>
+                      <li><a href=<?php echo "'".$local_host."index.php?lang=".$lang."#qrcode_anc'"; ?> >Il mio QRCode</a></li>
+                      <li><a href=<?php echo "'".$local_host."index.php?lang=".$lang."#vota_anc'"; ?> >Vota</a></li>
                      </ul>
                     </li>
                     <li class="dropdown">

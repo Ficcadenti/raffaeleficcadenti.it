@@ -12,7 +12,7 @@
   <section id="footer-navigazione">
     <div class="row no-gutters">
       <div class="col-sm-4">
-          <h3><?php echo $SEGUIMI_STR; ?></h3>
+          <h3 class="myfont"><?php echo $SEGUIMI_STR; ?></h3>
           <div class="col-md-12">
                       <ul class="social-network social-circle">
                           <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
@@ -27,7 +27,7 @@
     </div> <!-- /row -->
   </section> <!-- /section -->
 
-  <section id="footer-copy">
+  <div id="footer-copy">
     <div class="row no-gutters">
       <div class="col-sm-12">
         <p class="rigth">&copy; <?php echo $MESE_STR; ?> 2016 Raffaele Ficcadenti. &middot; 
@@ -37,6 +37,6 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
 
 </footer>
