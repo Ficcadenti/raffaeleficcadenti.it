@@ -89,7 +89,7 @@
         <div class="row">
           <div class="col-sm-12 panel-carousel">
             <?php
-                  include("./index_php.php");
+                  include("../sviluppo/php-example/index.php");
             ?>  
           </div><!-- /.col-sm-12 -->
         </div><!-- /.row -->
