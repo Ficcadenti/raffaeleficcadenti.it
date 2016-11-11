@@ -1,0 +1,85 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_01.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 07-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+<head>
+	<title>sorgente: esempio_01.html</title>
+	<!-- Sezione per i CSS -->
+	<style>
+		b {
+		    font-style: italic;
+		    font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<script type="application/x-javascript">
+
+		function benvenuto (nome) 
+		{
+			alert("Benvenuto, " + nome);
+		}
+
+		/* 
+			questo verrà ignorato
+		*/
+		alert("Primo messaggio");
+		document.write("<b>Ciao mondo web!!!</b><br>");
+		// questo è un commento
+		alert("Secondo messaggio");
+
+		var a=parseFloat("34acb");
+		var b=parseInt("3b65");
+	
+		if(isNaN('NaN')) alert ("non a number");
+		document.write(a+"<br>");
+		document.write(b+"<br>");
+
+		var gradiF = prompt("Introdurre la temperatura in gradi Fahrenheit",100);
+		var gradiC = 5/9 * (gradiF - 32);
+		alert(gradiF + " gradi Farhenheit corrispondono a " + gradiC + " gradi Celsisus");
+
+		var nome=prompt("Come ti chiami?");
+		if (nome != "")
+		{
+			benvenuto(nome);
+		}
+
+		var anni = prompt('Quanti anni hai?', 20);
+		var msg = "Ciao, vedo che sei " + (anni >= 18 ? "maggiorenne" : "minorenne") + "!";
+		alert(msg);
+
+		var anni;
+		do
+		{
+			anni = prompt("Quanti anni hai?",20);
+		} while (isNaN(anni))
+		var msg = "Ciao, vedo che sei " + (anni >= 18 ? "maggiorenne" : "minorenne") + "!";
+		alert(msg);
+
+		for (var i = 1; i<= 3; alert("i = " + i++));
+
+		function somma (a, b)
+		{ //una semplice funzione
+			return a+b;
+		}
+
+		alert(somma(3,2));
+
+	</script>
+</body>
+</hmtl>

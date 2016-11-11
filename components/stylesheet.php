@@ -32,6 +32,10 @@
 	{
 	    	$local_host="../";
 	}
+	else if (strpos($from_page, 'corso_js') !== false) 
+	{
+	    	$local_host="../";
+	}
 	else /* DEFAULT */
 	{
 		$local_host="./";

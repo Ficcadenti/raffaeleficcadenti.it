@@ -1,0 +1,81 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_01.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 07-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+<head>
+	<title>sorgente: esempio_02.html</title>
+	<!-- Sezione per i CSS -->
+	<style>
+		b {
+		    font-style: italic;
+		    font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<script type="application/x-javascript">
+		var str = new String("Raffaele");
+		document.write("La stringa \xE9 lunga "+str.length+" caratteri!<br>");
+		document.write("Raffaele Ficcadenti".length+" caratteri!<br>");
+
+		var t1 = new String ("TeStO");
+		var t2 = t1.toLowerCase() //restituisce "testo"
+		var t3 = t1.toUpperCase() //Restituisce "TESTO"
+
+		document.write(t1+"<br>");
+		document.write(t2+"<br>");
+		document.write(t3+"<br>");
+
+		var ultimoCarattere = str.charAt(str.length - 1);
+		var ultimoCarattereAscii = str.charCodeAt(str.length - 1);
+		document.write(ultimoCarattere+"<br>");	
+		document.write(ultimoCarattereAscii+"<br>");	
+
+		var stringa;
+		for (codice = "0".charCodeAt(0); codice <= "9".charCodeAt(0); codice ++ ) 
+		{
+			stringa = stringa + String.fromCharCode(codice);
+		}
+		document.write(stringa+"<br>");	
+
+		function replaceAll(str, find, replace) 
+		{
+  			return str.replace(new RegExp(find, 'g'), replace);
+		}
+
+		function substrCount (str, subString) 
+		{
+			document.write(subString+"<br>");	
+			document.write(str+"<br>");		
+			document.write(replaceAll(str,subString, "")+"<br>");		
+			document.write(str.length+"<br>");	
+			document.write((replaceAll(str,subString, "")).length+"<br>");	
+			document.write(subString.length+"<br>");		
+			return (str.length - (replaceAll(str,subString, "")).length) / subString.length;
+		}
+
+
+		var str1="Ciao Ciao Ciao Raffaele";
+		var occ=substrCount(str1,"Ciao");
+		document.write(occ+"<br>");			
+
+		document.write(str1.split(" ")+"<br>");		
+	
+		document.write("PHI Greco="+Math.PI);	
+	</script>
+</body>
+</hmtl>
