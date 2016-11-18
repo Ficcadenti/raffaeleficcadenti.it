@@ -1,0 +1,81 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_03.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 18-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_03.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Sotto la superficie della macchina, il programma si muove. Senza sforzo,<br>
+			si espande e si contrae. In grande armonia, gli elettroni si disperdono e si <br>
+			raggruppano. Le forme sullo schermo sono solo increspature sulla superficie<br>
+			dell'acqua. L'essenza rimane al di sotto, invisibile."<br>
+		</i>
+		<br>
+		<strong>Master Yuan-Ma</strong><i> - The Book of Programming</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		capitolo("Operatori");
+
+		console.log(3>2);
+		console.log(3>5);
+		console.log("Raffaele"<"Valeria");
+		console.log(NaN==NaN);
+
+		
+		println("3>2 => "+(3>2));
+		println("3>5 => "+(3>52));
+		println("Raffaele"+"&lt;"+"Valeria =>"+("Raffaele">"Valeria"));
+		println("NaN==NaN => "+(NaN==NaN));		
+		println("true && false => "+(true&&false));
+		println("true || false => "+(true||false));
+		println("!true => "+(!true));
+
+		println("true?1:2 =>"+(true ? 1:2));
+		println("false?1:2 =>"+(false ? 1:2));
+		println("\"cinque\"*2 =>"+("cinque"*2));
+
+		println("false==0 =>"+(false==0));
+		println("false===0 =>"+(false===0));
+		println("false==\"\" =>"+(false==""));
+		println("false===\"\" =>"+(false===""));
+
+		println("typeof 4 =>"+(typeof 4));
+		println("typeof 4.5 =>"+(typeof 4.5));
+		println("typeof \"Ciao\" =>"+(typeof "Ciao"));
+		println("typeof true =>"+(typeof true));
+		println("typeof null =>"+(typeof null));
+		println("typeof NaN =>"+(typeof NaN));
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a>
+	</div>
+
+</body>
+</hmtl>

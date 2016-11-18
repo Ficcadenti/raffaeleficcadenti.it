@@ -37,7 +37,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 			Per gli esempi che utilizzano chiamate a MySQL dovrete installare il database di esempio con le relative tabelle,<br>
 			ovviamente deve essere presente un'installazione di MySQL, e dovete conoscere la password di root.<br><br>
 			Lanciare da riga di comando:<br><br>
-				mysql -u <strong>root</strong> -p{<strong>password</strong>} -h {<strong>nomehost</strong>} < <strong>php-example.sql</strong><br><br>
+				mysql -u <strong>root</strong> -p{<strong>password</strong>} -h {<strong>nomehost</strong>} < <strong>js-example.sql</strong><br><br>
 			Lo script <strong>js-example.sql</strong> lo trovate versionato sotto la directory dumpdb.
 		</p>
 		<ul>
@@ -46,6 +46,15 @@ http://www.w3.org/TR/html4/frameset.dtd>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/esempio_01.html" target="_blank">esempio_01.html</a></b>: Introduzione.</li>
 					<li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/esempio_02.html" target="_blank">esempio_02.html</a></b>: L'oggetto String.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/esempio_03.html" target="_blank">esempio_03.html</a></b>: Operatori.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 1</strong> - Struttura di un programma.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione 01 - Struttura di un programma/esempio_04.html" target="_blank">esempio_04.html</a></b>: Esempio.</li>
 					<br>
 				</ul>
 			</li>

@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_01.html
+	# esempio_02.html
 	# 
 	# 
 	# AUTHORS:
@@ -19,63 +19,56 @@
 <head>
 	<title>sorgente: esempio_02.html</title>
 	<!-- Sezione per i CSS -->
-	<style>
-		b {
-		    font-style: italic;
-		    font-size: 30px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
 </head>
 <body>
-	<script type="application/x-javascript">
-		var str = new String("Raffaele");
-		document.write("La stringa \xE9 lunga "+str.length+" caratteri!<br>");
-		document.write("Raffaele Ficcadenti".length+" caratteri!<br>");
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
 
+	<script type="application/x-javascript">
+		
+		capitolo("Stringhe");
+
+		var str = new String("Raffaele");
 		var t1 = new String ("TeStO");
 		var t2 = t1.toLowerCase() //restituisce "testo"
 		var t3 = t1.toUpperCase() //Restituisce "TESTO"
 
-		document.write(t1+"<br>");
-		document.write(t2+"<br>");
-		document.write(t3+"<br>");
+		println("La stringa \xE9 lunga "+str.length+" caratteri!");
+		println("Raffaele Ficcadenti".length+" caratteri!<br>");
+
+		
+		println(t1);
+		println(t2);
+		println(t3);
 
 		var ultimoCarattere = str.charAt(str.length - 1);
 		var ultimoCarattereAscii = str.charCodeAt(str.length - 1);
-		document.write(ultimoCarattere+"<br>");	
-		document.write(ultimoCarattereAscii+"<br>");	
+		println(ultimoCarattere);	
+		println(ultimoCarattereAscii);	
 
 		var stringa;
 		for (codice = "0".charCodeAt(0); codice <= "9".charCodeAt(0); codice ++ ) 
 		{
 			stringa = stringa + String.fromCharCode(codice);
 		}
-		document.write(stringa+"<br>");	
+		println(stringa);	
 
-		function replaceAll(str, find, replace) 
-		{
-  			return str.replace(new RegExp(find, 'g'), replace);
-		}
-
-		function substrCount (str, subString) 
-		{
-			document.write(subString+"<br>");	
-			document.write(str+"<br>");		
-			document.write(replaceAll(str,subString, "")+"<br>");		
-			document.write(str.length+"<br>");	
-			document.write((replaceAll(str,subString, "")).length+"<br>");	
-			document.write(subString.length+"<br>");		
-			return (str.length - (replaceAll(str,subString, "")).length) / subString.length;
-		}
-
-
+		
 		var str1="Ciao Ciao Ciao Raffaele";
 		var occ=substrCount(str1,"Ciao");
-		document.write(occ+"<br>");			
+		println(occ);			
 
-		document.write(str1.split(" ")+"<br>");		
-	
-		document.write("PHI Greco="+Math.PI);	
+		println(str1.split(" "));		
+		println("PHI Greco="+Math.PI);	
+
+
 	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a>
+	</div>
+
 </body>
 </hmtl>
