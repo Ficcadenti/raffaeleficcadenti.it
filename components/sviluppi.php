@@ -41,6 +41,7 @@
         <li class="list-group-item servizi-opzione"><a href=<?php echo "'".$local_host."./components/corso_php.php?lang=".$lang."'"; ?>><?php echo $SVILUPPI_PHP_STR ?></a></li>
         <li class="list-group-item servizi-opzione"><a href=<?php echo "'".$local_host."./components/corso_js.php?lang=".$lang."'"; ?>><?php echo $SVILUPPI_JS_STR ?></a></li>
         <li class="list-group-item servizi-opzione"><a target="_blank" href="https://github.com/Ficcadenti/corso-java"><?php echo $SVILUPPI_JAVA_STR ?></a></li>
+        <li class="list-group-item servizi-opzione"><?php echo $SVILUPPI_WEBGL_STR ?></li>
         <li class="list-group-item servizi-opzione"><a target="_blank" href="https://github.com/Ficcadenti/perl-example"><?php echo $SVILUPPI_PERL_STR ?></a></li>
         <li class="list-group-item servizi-footer"><button class="btn btn-raised ripple-effect btn-primary" type="button"><?php echo $SVILUPPI_BTN_VISUALIZZA_STR ?></button></li>
       </ul>

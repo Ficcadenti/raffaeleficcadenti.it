@@ -92,6 +92,7 @@
 	$SVILUPPI_PHP_STR="PHP5 training";
 	$SVILUPPI_JS_STR="JavaScript training";
 	$SVILUPPI_JAVA_STR="Java training";
+	$SVILUPPI_WEBGL_STR="WebGL examples";
 	$SVILUPPI_PERL_STR="Perl examples";
 
 		/******* ADMINISTRATOR *******/
