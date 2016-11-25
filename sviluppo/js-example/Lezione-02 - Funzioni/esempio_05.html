@@ -1,0 +1,296 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_05.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 18-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_05.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Molti credono che la scienza informatica sia arte da segni. In realt&agrave; non lo &egrave;<br>
+			affatto: &egrave; solo un sacco di gente che costruisce nuove cose su quel che hanno<br>
+			creato altri, come un muro di piccole pietre."<br>
+		</i>
+		<br>
+		<strong>Donald Knuth</strong>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		capitolo("Funzioni");
+		paragrafo("Esempio 1");
+
+		var x=10;
+		var test="fuori";
+
+		var square = function(x)
+		{
+			return x*x;
+		}
+
+		var creaRumore=function()
+		{
+			println("Din Don!!!")
+		}
+
+		/* elevazione a potenza ciclica */
+		var eleva=function(base, esponente)
+		{
+			if(esponente == undefined)
+			{
+				esponente=2;
+			}
+			var res=1;
+			for(var i=0;i<esponente;i++)
+			{
+				res*=base;
+			}
+			return res;
+		}
+
+		/* elevazione a potenza ricorsiva */	
+		function eleva2(base, esponente)
+		{
+			if (esponente==0)
+			{
+				return 1;
+			}
+			else
+			{
+				return base * eleva2(base,esponente-1);
+			}
+		}
+
+		var f1=function()
+		{
+			var test="dentro f1";
+		}
+
+		var f2=function()
+		{
+			test="dentro f2";
+		}
+
+		f1();
+		println(test);
+
+		f2();
+		println(test);
+		println();
+
+		println("Il quadrato di "+x+ " \xE9 "+square(x));
+		creaRumore();
+		println("Test 1: "+eleva(3,10));
+		println("Test 2: "+eleva(3));
+		println("Test 3: "+eleva2(4,2));
+
+		var paesaggio=function()
+		{
+			var res="";
+			var pianura=function(size)
+			{
+				for(var i=0;i<size;i++)
+				{
+					res += "_";
+				}
+			}
+
+			var montagna=function(size)
+			{
+				res+="/";
+				for(var i=0;i<size;i++)
+				{
+					res += "'";
+				}
+				res+="\\"
+			}
+
+			pianura(3);
+			montagna(4);
+			pianura(6);
+			montagna(2);
+			pianura(1);
+			montagna(12);
+			pianura(4);
+			return res;
+		}
+
+		println(paesaggio());
+
+		function moltiplicatore(factor)
+		{
+			return function(num)
+			{
+				return num*factor;
+			}
+		}
+
+		var t=moltiplicatore(10);
+		println(t(5));
+
+		function cercaSoluzione(target)
+		{
+			function cerca(start, storia)
+			{
+				if( start == target )
+				{
+					return storia;
+				}
+				else if ( start > target)
+				{
+					return null;
+				}
+				else
+				{
+					return cerca(start+5, "(" + storia + " + 5)") || cerca(start*3, "(" + storia + " * 3)");
+				}
+			}
+			return cerca(1,"1");
+		}
+
+		var espandi=34;
+		println("esplodi "+espandi+": "+cercaSoluzione(espandi));
+
+		function zeroPad(number,width)
+		{
+			var str=String(number);
+			while(str.length < width)
+			{
+				str = "0" + str;
+			}
+			return str;
+		}
+
+		function printFarmInventory(number,animal)
+		{
+			println(zeroPad(number,3)+" "+animal);
+		}
+
+		printFarmInventory(3,"pecore");
+		printFarmInventory(5,"galline");
+		printFarmInventory(2,"polli");
+
+
+		chiudiparagrafo();	
+
+		capitolo("Esercizi");
+		paragrafo("Minimo");	
+
+		function minimo(a,b)
+		{
+			return (a<b ? a : b);
+		}
+
+		var a=10,b=20;
+
+		println("Il minimo tra "+a+" e "+b+" \xE9 " + minimo(a,b));
+
+		a=5;b=10;
+		println("Il minimo tra "+a+" e "+b+" \xE9 " + minimo(a,b));
+		chiudiparagrafo();
+
+		paragrafo("Ricorsività");	
+
+		function isEven(number)
+		{
+			if(number==0)
+			{
+				return true;
+			}
+			else if(number==1)
+			{
+				return false;
+			}
+			else if(number<0)
+			{
+				return isEven(-number);
+			}
+			else
+			{
+				return isEven(number-2);
+			}
+		}
+
+		var n=-10;
+
+		if(isEven(n))
+		{
+			println(n+" \xE9 pari.");
+		}
+		else
+		{
+			println(n+" \xE9 dispari.");
+		}
+		chiudiparagrafo();	
+
+		paragrafo("Conteggi");	
+
+		function countB(str)
+		{
+			var count=0;
+			for(var i=0; i<str.length; i++)
+			{
+				if(str.charAt(i)=="B")
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+
+		function countChar(str,ch)
+		{
+			console.log(str,ch);
+			var count=0;
+			for(var i=0; i<str.length; i++)
+			{
+				if(str.charAt(i)==ch)
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+
+		function countBnew(str)
+		{
+			return countChar(str,"B");
+		}
+
+		var str="BiBBia";
+
+		println(countB(str));
+		println(countBnew(str));
+		println(countChar(str,"i"));
+
+		chiudiparagrafo();	
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a>
+	</div>
+
+</body>
+</hmtl>

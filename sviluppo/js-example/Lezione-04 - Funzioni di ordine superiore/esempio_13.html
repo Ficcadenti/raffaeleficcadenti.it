@@ -1,0 +1,225 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_13.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 23-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_13.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Ci sono due modi per programmare del software: uno &egrave; di crearlo tato semplice<br>
+			da non lascia spazio ai difetti, l'altro di crearlo tanto complicato da non riuscire<br>
+			a trovarci difetti."<br>
+		</i>
+		<br>
+		<strong>Tony Hoare</strong><i> Premio Turing 1980</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("Funzioni di ordine superiore");
+		paragrafo("Astrazioni");
+
+		function showObj(obj)
+		{
+			for(var value in obj)
+			{
+				if ( typeof obj[value] != "object" ) 
+				{
+					document.write(value+": "+obj[value]+", ");	
+				}
+				else 
+				{
+					document.write(", "+value+": {");
+					showObj(obj[value]);
+					document.write("}");
+				}
+			}
+
+			println("");
+		}
+
+		function logEach(array)
+		{
+			for(var i=0;i<array.length;i++)
+			{
+				console.log(array[i]);
+			}
+		}
+
+		function forEach(array,action)
+		{
+			for(var i=0;i<array.length;i++)
+			{
+				action(array[i]);
+			}
+		}
+
+		var a=[1,2,3,4,5,6];
+		var sum=0;
+
+		forEach(a,console.log);
+
+		forEach(a,function(elementoCorrente)
+		{
+			sum+=elementoCorrente;
+		});
+		println(sum);
+		showObj(a);
+		
+		var s=0;
+		a.forEach( function(elementoCorrente)
+		{
+			s+=elementoCorrente;
+		});
+		println(s);
+
+		chiudiparagrafo();	
+
+		paragrafo("Funzioni anominme o lambda...");
+
+		var somma = function Sum(x, y) 
+		{ 
+    		return x + y; 
+		};
+
+		println("Nome funzione: "+somma.name);    // stampa "Sum"
+		println("Numero di parametri: "+somma.length);  // stampa 2
+
+		var a=10;
+		var b=20;
+		var s=somma(a,b);
+		println("somma("+a+","+b+")="+s);
+
+		var s1=(function(x, y) {
+    		return x + y; 
+		}(4,8));
+
+		println("Esempio di invocazione diretta (immediately-invoked function expression - <b>IIFE</b>): "+s1);
+		chiudiparagrafo();	
+
+
+		paragrafo("Callback");
+
+		function calcola(func, arg1, arg2) 
+		{
+			println("("+func+"): "+(typeof func));
+			if (func && typeof func === "function") 
+			{
+		    	return func(arg1, arg2);
+		    }
+		    else 
+		    {
+		    	println ("func undefined");
+		    }
+		}
+
+		function mostraValore(valore, indice) 
+		{
+		    println("pos("+indice+")="+valore);
+		}
+
+		var res=calcola(somma,10,20);
+		println(res);
+
+		var numeri = [11, 3, 24];
+ 		println(numeri);
+
+ 		println("Chimata tipo 1");
+		numeri.forEach(function(valore, indice) 
+		{
+		    println("pos("+indice+")="+valore);
+		});
+
+		println("");
+		println("Chimata tipo 2");
+		numeri.forEach(mostraValore);
+
+		var persone = [	{nome: "Raffaele",    cognome: "Ficcadenti", email: "raffaele.ficcadenti@gmail.com"},
+               			{nome: "Valeria", cognome: "Greco", email: "valeria5.greco@gmail.com"},
+               			{nome: "Sofia",    cognome: "Ficcadenti"},
+               			{nome: "Maria",    cognome: "Ficcadenti"},
+               			{nome: "Gabriele",    cognome: "Ficcadenti"},
+               		];
+
+        function mySort(a, b) 
+        {
+		    if (a.cognome < b.cognome) return -1;
+		    if (a.cognome > b.cognome) return 1;
+		    if (a.cognome = b.cognome)
+		    {
+		    	if (a.nome < b.nome) return -1;
+		    	if (a.nome > b.nome) return 1;
+		    	return 0;
+		    }
+		    return 0;
+		}
+
+		println("");
+		println("<b>Prima ordinamento</b>")
+		for(var i=0;i<persone.length;i++)
+		{
+			println(persone[i].cognome+" "+persone[i].nome+": "+persone[i].email);
+		}
+
+		println("<b>Dopo ordinamento</b>")
+		persone.sort(mySort);
+
+		for(var i=0;i<persone.length;i++)
+		{
+			println(persone[i].cognome+" "+persone[i].nome+": "+persone[i].email);
+		}
+		chiudiparagrafo();	
+
+		paragrafo("Funzioni che restituiscono funzioni");
+
+		var incrementatore = function(incremento) 
+		{
+			console.log("incremento="+incremento);
+		    return function(valore)
+		    {	
+		    	console.log("valore="+valore);
+		        return incremento + valore;
+		    };
+		};
+
+		var incDiCinque=incrementatore(5);
+
+		println("incDiCinque="+incDiCinque);
+		println("incDiCinque="+incDiCinque(10));
+		println("incDiCinque="+incDiCinque(-5));
+		println("incDiCinque="+incDiCinque(2));
+	
+		chiudiparagrafo();	
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>

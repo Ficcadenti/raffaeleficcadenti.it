@@ -1,0 +1,229 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_04.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 18-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_04.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"E il mio cuore s'illuminava di rosso sotto la pelle traslucida e devono amministrarmi <br>
+			10cc di JavaScript per farmi riprendere conoscenza (rispondo bene alle tossine nel sangue).<br>
+			Ehi, quella roba ti f&agrave; proprio scoppiare le branchie!"<br>
+		</i>
+		<br>
+		<strong>Why's (Poignant) </strong><i> - Guide to Ruby</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		capitolo("Struttura di un programma");
+		paragrafo("Variabili");
+
+		var var1=5*5;
+		var var2=var1+var1;
+		var var3;
+
+		println("var1="+var1);
+		println("var2="+var2);
+		println("var3="+var3);
+
+		var massimo=Math.max(2,4);
+		console.log("Il massimo tra 2 e 4 \xE9: "+massimo);
+		console.log(Math.min(2,10)+100);
+		
+
+
+		// var numero=Number(prompt("Inserisci un numero","..."));
+		// /* if-else*/
+		// if(isNaN(numero))
+		// {
+		// 	alert("non hai inserito un numero!!!!!");
+		// }
+		// else
+		// {
+		// 	println("Il qudrato di "+numero+" \xE9 "+numero*numero);
+		// }
+
+		// var numero=Number(prompt("Scegli un numero","0"));
+		// /* if-elseif*/
+		// if(isNaN(numero))
+		// {
+		// 	alert("non hai inserito un numero!!!!!");
+		// }
+		// else
+		// {
+		// 	if(numero<10) alert(numero+" \xE9 piccolo.");
+		// 	else if (numero<100) alert(numero+" \xE9 medio.");
+		// 	else alert(numero+" \xE9 molto grande.");
+		// }
+
+		/* while */
+		var number = 0;
+		while(number<=12)
+		{
+			console.log(number);
+			number+=2;
+		}
+		println();
+		var base = 2;
+		var esponente = 10;
+		var count =0;
+		var result = 1;
+		while(count<esponente)
+		{
+			result=result*base;
+			count++;
+		}
+		println(base+"^"+esponente+"="+result);
+		println();
+
+		/* do-while */
+		var counter = 7;
+		do
+		{
+			println(counter);
+			counter--;
+		}
+		while(counter>=0);
+		println();
+
+		/* for */
+		for(var i=0;i<=12;i+=2)
+		{
+			println(i);
+		}
+		println();
+
+
+		for(var i=20;;i++)
+		{
+			if(i%7==0) break;
+		}
+		println(i);
+		println();
+
+		var var2="boooo";
+
+		/* switch */
+		switch(var2)
+		{
+			case "SI":
+				{
+					println("SI");
+				}
+				break;
+			case "NO":
+				{
+					println("NO");
+				}
+				break;
+			default:
+				{
+					println("ne SI e ne NO !!!!");
+				}
+				break;
+		}
+
+		chiudiparagrafo();
+
+		var bRet=true;//confirm("Vuoi vedere gli esercizi ?");
+
+		if(bRet==true)
+		{
+			capitolo("Esercizi");
+			
+			paragrafo("Triangolo equilatero");
+			
+			for(var str=""; str.length < 8;str+="#")
+			{
+				println(str);
+			}
+			
+			chiudiparagrafo();
+
+			paragrafo("Fizz Buzz");
+			/*
+			// Soluzione semplice
+			for(var i=1; i<=100; i++)
+			{
+				if( (i%3==0) && (i%5==0) )
+				{
+					println("FizzBuzz");
+				}
+				else if( i%3==0 )
+				{
+					println("Fizz");
+				}
+				else if( i%5==0 )
+				{
+					println("Buzz");
+				}
+				else
+				{
+					println(i);
+				}
+			}*/
+
+			// Soluzione elegante 
+			for (var n = 1; n <= 100; n++) 
+			{
+				var output = "";
+				if (n % 3 == 0)
+				{
+					output += "Fizz";
+				}
+				if (n % 5 == 0)
+				{
+					output += "Buzz";
+				}
+				println(output || n);
+			}
+			chiudiparagrafo();
+
+			paragrafo("Scacchiera");
+			var size=16;
+			var str="";
+			for(var r=0; r<size; r++)
+			{
+				for(var c=0; c<size; c++)
+				{
+					//console.log((c+r)+":"+(c+r)%2);
+					(c+r)%2==0 ? str=str+"0":str=str+"1";
+				}	
+				println("["+str+"]");
+				str="";		
+			}
+
+			chiudiparagrafo();		
+		}
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a>
+	</div>
+
+</body>
+</hmtl>

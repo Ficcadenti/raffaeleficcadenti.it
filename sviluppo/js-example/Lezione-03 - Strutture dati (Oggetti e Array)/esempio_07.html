@@ -1,0 +1,180 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_07.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 22-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_07.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"In due occasioni mi hanno chiesto, 'Dica, signor Babbage, se inserisce <br>
+			nella macchina le cifre sbagliate, ne usciranno risposte giuste?' [...] Non <br>
+			riesco a capacitarmi della confusione di idee che potrebbe provocare tale <br>
+			domanda."<br>
+		</i>
+		<br>
+		<strong>Charles Babbage</strong><i> Passages from the Life of a Philosopher (1864)</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/journal.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("Strutture Dati");
+
+		paragrafo("Correlazione");
+
+		function phi(tab)
+		{
+			return ((tab[3]*tab[0] - tab[2]*tab[1])/
+				Math.sqrt(	(tab[2]+tab[3])*
+							(tab[0]+tab[1])*
+							(tab[1]+tab[3])*
+							(tab[0]+tab[2])
+							));
+		}
+
+		function hasEvent(event,entry)		
+		{
+			return (entry.events.indexOf(event)!=-1);
+		}
+
+
+		function tableFor(event, journal) 
+		{
+			var table = [0, 0, 0, 0];
+			for (var i = 0; i < journal.length; i++) 
+			{
+				var entry = journal[i];
+				var index = 0;
+
+				if (hasEvent(event, entry)) 
+				{
+					index += 1;
+				}
+				if (entry.squirrel) 
+				{
+					index += 2;
+				}
+
+				table[index] += 1;
+
+			}
+			return table;
+		}
+
+		function storePhi(map,event,phi)
+		{
+			map[event]=phi;
+		}
+
+		function gatherCorrelations(journal) 
+		{
+			var phis = {};
+			journal.forEach( function(entry) 
+			{
+				entry.events.forEach( function(elementoCorrente) 
+				{
+					if (!(elementoCorrente in phis))
+					{
+						phis[elementoCorrente] = phi(tableFor(elementoCorrente, journal));
+					}
+				});
+			});
+			/*for (var entry = 0; entry < journal.length; entry++) 
+			{
+				var events = journal[entry].events;
+				for (var i = 0; i < events.length; i++) 
+				{
+					var event = events[i];
+					if (!(event in phis))
+					{
+						phis[event] = phi(tableFor(event, journal));
+					}
+				}
+			}*/
+			return phis;
+		}
+
+		function remeberTo(arr,task)
+		{
+			arr.push(task);
+		}
+
+		function whatIsNext(arr)
+		{
+			return arr.shift();
+		}
+
+		var map={};
+		
+		println(JOURNAL.length);
+		println(tableFor("lasagna",JOURNAL));
+		println("Correlazione di["+tableFor("lasagna",JOURNAL)+"]="+phi(tableFor("lasagna",JOURNAL)));
+
+		storePhi(map,"lasagna",phi(tableFor("lasagna",JOURNAL)));
+		storePhi(map,"pizza",phi(tableFor("pizza",JOURNAL)));
+
+		
+		if("lasagna" in map)
+		{
+			println("phi(lasagna)= "+map["lasagna"]);
+		}
+
+		println("----------------------------------");
+
+		for (var i = 0; i < JOURNAL.length; i++) 
+		{
+			var entry = JOURNAL[i];
+			if (hasEvent("peanuts", entry) && !hasEvent("brushed teeth", entry))
+			{
+				remeberTo(entry.events,"peanut teeth");
+			}
+		}
+
+		var map1=gatherCorrelations(JOURNAL);
+
+		for(var evt in map1)
+		{
+			var phi=map1[evt];
+			if( (phi>0.1) || (phi<-0.1))
+			{
+				println("phi("+evt+")= "+phi);
+			}
+		}
+
+
+
+		chiudiparagrafo();	
+
+
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a>
+	</div>
+
+</body>
+</hmtl>

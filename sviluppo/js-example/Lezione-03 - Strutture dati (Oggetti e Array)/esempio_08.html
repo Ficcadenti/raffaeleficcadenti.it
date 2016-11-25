@@ -1,0 +1,103 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_08.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 23-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_08.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"In due occasioni mi hanno chiesto, 'Dica, signor Babbage, se inserisce <br>
+			nella macchina le cifre sbagliate, ne usciranno risposte giuste?' [...] Non <br>
+			riesco a capacitarmi della confusione di idee che potrebbe provocare tale <br>
+			domanda."<br>
+		</i>
+		<br>
+		<strong>Charles Babbage</strong><i> Passages from the Life of a Philosopher (1864)</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("Strutture Dati");
+		paragrafo("Array");
+
+		var arr1=[];
+		var arr2=[];
+
+		arr1.push("Raffaele");
+		arr1.push("Valeria");
+		arr1.push("Sofia");
+		arr1.push("Sofia");
+		arr1.push("Maria");
+		arr1.push("Gabriele");
+
+		println("arr1="+arr1.join(";"));
+		println("arr1.shift()="+arr1.shift());
+		arr1.unshift("Francesco","Pluto");
+		println("arr1="+arr1.join(";"));
+
+		
+		println(arr1.indexOf("Sofia",0));
+		println(arr1.lastIndexOf("Sofia"));
+
+		arr2=arr1.slice(1,3);
+		println("arr2="+arr2);
+
+		function remove(array, index)
+		{
+			return array.slice(0,index).concat(array.slice(index+1));
+		}
+		println("arr1="+remove(arr1,1));
+
+		println("Raffaele.slice(3,5)="+("Raffaele".slice(3,5)));
+		println("Raffaele.indexOf(\"fa\")="+("Raffaele".indexOf("fa")));
+		println("trim()="+("      Raffaele    ".trim()));
+
+		println("");
+		var str="Raffaele";
+
+		for(var i=0;i<str.length;i++)
+		{
+			println(str[i]+"-"+str.charAt(i));
+		}
+
+		println("");
+		var t=[1,2,"ciao",4];
+		for(var i in t)
+		{
+			println(t[i]);
+		}
+
+		chiudiparagrafo();	
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>

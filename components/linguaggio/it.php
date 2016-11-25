@@ -93,7 +93,7 @@
 	$SVILUPPI_BTN_VISUALIZZA_STR="Visualizza tutto";
 	$SVILUPPI_ALL_STR="Tutti i miei sviluppi";
 	$SVILUPPI_PHP_STR="Corso di PHP5";
-	$SVILUPPI_JS_STR="Corso di JavaScript";
+	$SVILUPPI_JS_STR="Corso di ECMAScript® (JavaScript)";
 	$SVILUPPI_JAVA_STR="Corso di Java";
 	$SVILUPPI_WEBGL_STR="Esempi WebGL";
 	$SVILUPPI_PERL_STR="Esempi in Perl";

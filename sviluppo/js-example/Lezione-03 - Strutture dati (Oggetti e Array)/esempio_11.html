@@ -1,0 +1,289 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_11.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 23-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_11.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"In due occasioni mi hanno chiesto, 'Dica, signor Babbage, se inserisce <br>
+			nella macchina le cifre sbagliate, ne usciranno risposte giuste?' [...] Non <br>
+			riesco a capacitarmi della confusione di idee che potrebbe provocare tale <br>
+			domanda."<br>
+		</i>
+		<br>
+		<strong>Charles Babbage</strong><i> Passages from the Life of a Philosopher (1864)</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("Strutture Dati");
+		paragrafo("Esercizio 1: Somma di un untervallo");
+
+		function range(start,end,step)
+		{
+			var arr=[];
+			var temp;
+
+			if((step==undefined)||(step==0))
+			{
+				step=1;
+			}
+			if(step>0)
+			{
+				for(var i=start;i<=end;i+=step)
+				{
+					arr.push(i);
+				}
+			}
+			else
+			{
+				for(var i=start;i>=end;i+=step)
+				{
+					arr.push(i);
+				}	
+			}
+			return arr;
+		}
+
+		function sum(arr)
+		{
+			var temp=0;
+			for(var i=0;i<arr.length;i++)
+			{
+				temp+=arr[i];
+			}
+			return temp;
+		}
+
+		var start=1;
+		var end=10;
+
+		var arr=range(start,end,1);
+		var arr2=range(end,start,-2);
+	
+		println(arr);
+		println(sum(arr));
+
+		println(arr2);
+		println(sum(arr2));
+
+
+		chiudiparagrafo();	
+
+		paragrafo("Esercizio 2: Reverse Array");
+
+		function reverseArray(arr)
+		{
+			var arr_temp=[];
+			for(var i=arr.length-1;i>=0;i--)
+			{
+				arr_temp.push(arr[i]);
+			}
+
+			return arr_temp;
+		}
+
+		function reverseArrayInPlace(arr)
+		{
+				var arr_temp=[];
+				/*while(arr.length>0)
+				{
+					var val=arr.pop();
+					console.log(val);
+					arr_temp.push(val);
+				}
+
+				for(var i=0;i<arr_temp.length;i++)
+				{
+					arr.push(arr_temp[i]);
+				}*/
+				for (var i = 0; i < Math.floor(arr.length / 2); i++) 
+				{
+					var swap = arr[i];
+					arr[i] = arr[arr.length - 1 - i];
+					arr[arr.length - 1 - i] = swap;
+				}
+				return arr;
+		}
+
+		
+		var arr_reverse=reverseArray(arr);
+
+		reverseArrayInPlace(arr);
+		println(arr);
+		println(arr_reverse);
+		
+
+		chiudiparagrafo();	
+		
+		paragrafo("Esercizio 3: Liste");
+
+		function showList(list)
+		{
+			if(list!=null)
+			{
+				println(list.value);
+				showList(list.next);
+			}
+	
+		}
+
+		function arrayToList(array) 
+		{
+			var list = null;
+			for (var i = array.length - 1; i >= 0; i--)
+			{
+				list = {value: array[i], next: list};
+			}
+			return list;
+		}
+
+		function listToArray(list) 
+		{
+			var array = [];
+			for (var node = list; node!=null; node = node.next)
+			{
+				array.push(node.value);
+			}
+			return array;
+		}
+
+		function addToList(value,list)
+		{
+			return {value: value, next: list};
+		}
+
+		function findInList(pos,list)
+		{
+			if(list==null)
+			{
+				return undefined;
+			}
+			else if(pos==0)
+			{
+				return list.value;
+			}else 
+			{
+				return findInList(pos-1,list.next);
+			}
+		}
+
+
+		var list=arrayToList(arr);
+		var pos=4;
+		list=addToList(11,list);
+		list=addToList(12,list);
+		list=addToList(13,list);
+
+
+		showList(list);
+		println(listToArray(list).join("-->"));
+		println("list["+pos+"]="+findInList(pos,list));
+
+		chiudiparagrafo();	
+
+		
+		paragrafo("Esercizio 4: Confronto tra oggetti");
+
+		function deepEqual(a, b) 
+		{
+			if (a === b) 
+			{
+				return true;
+			}
+
+			if (a == null || typeof a != "object" || b == null || typeof b != "object")
+			{
+				return false;
+			}
+
+			var propsInA = 0;
+			var propsInB = 0;
+
+			for (var prop in a)
+			{
+				propsInA += 1;
+			}
+
+			for (var prop in b) 
+			{
+				propsInB += 1;
+				if (!(prop in a) || !deepEqual(a[prop], b[prop]))
+				{
+					return false;
+				}
+			}
+
+			return propsInA == propsInB;
+		}
+
+		function showObj(obj)
+		{
+			for(var value in obj)
+			{
+				if ( typeof obj[value] != "object" ) 
+				{
+					document.write(value+": "+obj[value]+" ");	
+				}
+				else 
+				{
+					document.write(", "+value+": {");
+					showObj(obj[value]);
+					document.write("}");
+				}
+			}
+		}
+
+		var obj1={value: 10, email: ["raffaele.ficcadenti@gmail.com","rficcad@e-tech.net"]};
+		var obj2={value: 3, email: ["valeria5.greco@gmail.com"]};
+		showObj(obj1);
+		println("");
+		println(deepEqual(obj1,obj1));
+		println(deepEqual(obj1,obj2));
+
+
+
+		showObj(listToArray(list));
+		println("");
+		var str = JSON.stringify(list);
+		
+		showObj(list);
+		println("");
+		println(str);
+
+
+		chiudiparagrafo();	
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>

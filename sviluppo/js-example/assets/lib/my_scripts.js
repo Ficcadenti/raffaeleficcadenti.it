@@ -12,7 +12,13 @@ function capitolo(str) /* utilizzo di variabili statiche */
 function paragrafo(str) /* utilizzo di variabili statiche */
 {
 	num_paragrafo++;
-	println("<h2 id=\"m30\">"+num_capitolo+"."+num_paragrafo+". "+str+"</h2>");
+	println("<h2 class=\"m30\">"+num_capitolo+"."+num_paragrafo+". "+str+"</h2>");
+	document.write("<div id=\""+str+"\" class=\"m70\">\n");
+}
+
+function chiudiparagrafo()
+{
+	println("</div>")
 }
 
 function replaceAll(str, find, replace) 
@@ -31,7 +37,22 @@ function substrCount (str, subString)
 	return (str.length - (replaceAll(str,subString, "")).length) / subString.length;
 }
 
-function println(str)
+function println(str="")
 {
 	document.write(str+"<br>\n");
+}
+
+function print(str="")
+{
+	document.write(str);
+}
+
+function infoBrowser()
+{
+	println('Browser           : '+navigator.appName);
+	println('Browser Code Name : '+navigator.appCodeName);
+	println('Cookie enabled    : '+navigator.cookieEnabled);
+	println('Versione          : '+navigator.appVersion);
+	println('Piattaforma       : '+navigator.platform);
+	println('User Agent        : '+navigator.userAgent);
 }

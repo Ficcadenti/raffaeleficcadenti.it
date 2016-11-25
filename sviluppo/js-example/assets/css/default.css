@@ -1,42 +1,45 @@
-b
+b /* tag */
 {
     font-size: 15px;
     color: #000000;
 }
 
-b1 
+.b1 /* class */
 {
     font-size: 30px;
     color: #0000FF;
 }
 
-h2 
+h2  /* tag */
 {
 	margin-left: 30px;
 }
 
-#m30 
+.m30 /* classe */
 {
 	margin-left: 30px;
 }
 
-#m70 {
+.m70 /* classe */
+{
 	margin-left: 70px;
 }
 
-table 
+table /* tag */
 {
     border-collapse: collapse;
     width: 100%;
 }
 
-th, td 
+th, td /* tag */
 {
     padding: 8px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
-.dotcom {color:#4CAF50}
+.dotcom /* classe */
+{color:#4CAF50}
 
-tr#riga:hover{background-color:#f5f5f5}
+tr#riga:hover
+{background-color:#f5f5f5}

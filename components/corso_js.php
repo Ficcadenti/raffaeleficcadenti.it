@@ -79,7 +79,7 @@
         <div class="row">
           <div class="col-sm-12 panel-carousel">
 
-            <h2><a href="https://github.com/Ficcadenti/js-example" target="_blank">Repository GIT - JavaScript Example</a></h2>
+            <h2><a href="https://github.com/Ficcadenti/js-example" target="_blank">Repository GIT - ECMAScript® (JavaScript) Example</a></h2>
 
           </div><!-- /.col-sm-12 -->
         </div><!-- /.row -->

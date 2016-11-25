@@ -1,0 +1,182 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_12.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 23-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_12.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"In due occasioni mi hanno chiesto, 'Dica, signor Babbage, se inserisce <br>
+			nella macchina le cifre sbagliate, ne usciranno risposte giuste?' [...] Non <br>
+			riesco a capacitarmi della confusione di idee che potrebbe provocare tale <br>
+			domanda."<br>
+		</i>
+		<br>
+		<strong>Charles Babbage</strong><i> Passages from the Life of a Philosopher (1864)</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/alberobinario.min.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/alberobinario_slim.min.js"></script>
+
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("Strutture Dati");
+		paragrafo("Esercizio 1: albero binario");
+
+		var val=6;
+		var valori=[6,2,8,1,4,12,3,9,15];
+		//var valori=[1,3,2];
+
+		var tree=null;
+
+		for(var i=0;i<valori.length;i++)
+		{
+			if(tree==null)
+			{
+				tree=new AlberoDiRicerca(valori[i]);
+			}
+			else
+			{
+				tree.aggiungi(valori[i]);
+			}
+		}
+
+		/*for(var i=0;i<5;i++)
+		{
+			var rnd=Math.floor((Math.random()*100));
+			println(rnd);
+			tree.aggiungi(rnd);
+		}*/
+	
+		println("Visita Preordine = "+tree.visitaPreordine());
+		println("Visita Postordine = "+tree.visitaPostordine());
+		println("Visita Simmetrica (ordinato) = "+tree.visitaSimmetrica());
+		println("Frontiera = "+tree.frontiera());
+		println("Altezza = "+tree.altezza());
+		println("Numero nodi = "+tree.count());
+		println("Min valore= "+tree.minValore());
+		println("Max valore = "+tree.maxValore());
+		println("Min nodo= "+tree.minNodo().valore);
+		println("Max nodo = "+tree.maxNodo().valore);
+		println("Cerca("+val+") = "+tree.cerca(val));
+
+	
+		var nodo=tree.get(val);
+		if(nodo!=null)
+		{
+			println("Valore("+val+") trovato nel nodo: "+nodo.info);
+			var p=nodo.getParent();
+			if(p!=null)
+			{
+				println("Parent di ("+val+"): "+p.valore);
+			}
+		}
+		else 
+		{
+			println("Valore("+val+") non trovato !!!!");	
+		}
+
+		var p=val;
+		var nodop=tree.predecessore(p);
+		println("Precedessore di ("+p+"): "+nodop.valore);
+
+		var s=val;
+		var nodos=tree.successore(s);
+		println("Successore di ("+s+"): "+nodos.valore);
+
+		tree.cancella(val);
+		console.log(tree);
+		println("Array: "+tree.toArray());
+
+		
+
+		chiudiparagrafo();	
+		paragrafo("Esercizio 2: albero binario slim");
+
+		var tree_slim=null;
+		for(var i=0;i<valori.length;i++)
+		{
+			if(tree_slim==null)
+			{
+				tree_slim=creaAlberoBinarioDiRicerca(valori[i]);
+			}
+			else
+			{
+				aggiungi(tree_slim,valori[i]);
+			}
+		}
+
+		println("Visita Preordine: "+visitaPreordine(tree_slim));
+		println("Visita Postordine = "+visitaPostordine(tree_slim));
+		println("Visita Simmetrica (ordinato) = "+visitaSimmetrica(tree_slim));
+		println("Frontiera = "+frontiera(tree_slim));
+		println("Altezza = "+altezza(tree_slim));
+		println("Numero nodi = "+count(tree_slim));
+		println("Min valore= "+minValore(tree_slim));
+		println("Max valore = "+maxValore(tree_slim));
+		println("Min nodo= "+minNodo(tree_slim).valore);
+		println("Max nodo = "+maxNodo(tree_slim).valore);
+		println("Cerca("+val+") = "+cerca(tree_slim,val));
+
+		var nodo=get(tree_slim,val);
+		if(nodo!=null)
+		{
+			println("Valore("+val+") trovato nel nodo: "+nodo.info);
+			var p=getParent(nodo);
+			if(p!=null)
+			{
+				println("Parent di ("+val+"): "+p.valore);
+			}
+		}
+		else 
+		{
+			println("Valore("+val+") non trovato !!!!");	
+		}
+
+		p=val;
+		nodop=predecessore(tree_slim,p);
+		println("Precedessore di ("+p+"): "+nodop.valore);
+
+		s=val;
+		nodos=successore(tree_slim,s);
+		println("Successore di ("+s+"): "+nodos.valore);
+
+		cancella(tree_slim,34);
+		println("Array: "+toArray(tree_slim));
+
+		console.log(tree_slim);		
+
+		chiudiparagrafo();	
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>
