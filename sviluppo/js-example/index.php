@@ -26,12 +26,14 @@ http://www.w3.org/TR/html4/frameset.dtd>
 		</style>
 	</head>
 	<body>
-		<h2><strong> Repository per Lezioni/esempi ECMAScript® (JavaScript) </strong></h2>
+		<h2><strong> Repository per lezioni/esempi ECMAScript® (JavaScript) </strong></h2>
 		(c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br>
 		Ho cercato di raccogliere in questo repository, le basi della programmazione ECMAScript® (JavaScript).
 		Per ogni correzione o suggerimento, non esitate a scrivermi.
 		Buon 'coding'.
 		Raffaele.
+		<br><br>
+		<!--
 		<p>
 			<b>Prima di partire</b><br><br>
 			Per gli esempi che utilizzano chiamate a MySQL dovrete installare il database di esempio con le relative tabelle,<br>
@@ -40,6 +42,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				mysql -u <strong>root</strong> -p{<strong>password</strong>} -h {<strong>nomehost</strong>} < <strong>js-example.sql</strong><br><br>
 			Lo script <strong>js-example.sql</strong> lo trovate versionato sotto la directory dumpdb.
 		</p>
+		-->
 		<ul>
 			<li><strong>LEZIONE N. 0</strong> - Per iniziare.
 				<ul>
@@ -85,6 +88,17 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				<ul>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-04 - Funzioni di ordine superiore/esempio_13.html" target="_blank">esempio_13.html</a></b>: Esempio.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-04 - Funzioni di ordine superiore/esempio_14.html" target="_blank">esempio_14.html</a></b>: JSON.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-04 - Funzioni di ordine superiore/esempio_15.html" target="_blank">esempio_15.html</a></b>: Oggetto this.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-04 - Funzioni di ordine superiore/esempio_16.html" target="_blank">esempio_16.html</a></b>: Esercizi.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 5</strong> - Vita segrata degli oggetti.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_17.html" target="_blank">esempio_17.html</a></b>: Esempio.</li>
 					<br>
 				</ul>
 			</li>

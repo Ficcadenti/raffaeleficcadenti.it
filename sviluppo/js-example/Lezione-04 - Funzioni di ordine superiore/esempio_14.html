@@ -1,0 +1,329 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_14.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 25-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_14.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Ci sono due modi per programmare del software: uno &egrave; di crearlo tato semplice<br>
+			da non lascia spazio ai difetti, l'altro di crearlo tanto complicato da non riuscire<br>
+			a trovarci difetti."<br>
+		</i>
+		<br>
+		<strong>Tony Hoare</strong><i> Premio Turing 1980</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/ancestry.js"></script>
+	<script type="application/x-javascript">
+
+		function showObj(obj)
+		{
+			for(var value in obj)
+			{
+				if ( typeof obj[value] != "object" ) 
+				{
+					document.write(value+": "+obj[value]+" ");	
+				}
+				else 
+				{
+					document.write("obj["+value+"]=> {");
+					showObj(obj[value]);
+					document.write("}");
+					println();
+				}
+			}
+		}
+
+		infoBrowser();
+		capitolo("Funzioni di ordine superiore");
+		paragrafo("JSON");
+
+			var json_obj={"nome":"Raffaele", "cognome":"Ficcadenti", "email":"raffaele.ficcadenti@gmail.com"};
+			var str=JSON.stringify(json_obj);
+
+			println(str);
+
+			println(JSON.parse(str).nome);
+			println(JSON.parse(str).cognome);
+			println(JSON.parse(str).email);
+
+			var ancestry=JSON.parse(ANCESTRY_FILE);
+			println(ancestry.length);
+
+			println(ANCESTRY_FILE);
+
+			/*
+			for(var i=0;i<ancestry.length;i++)
+			{
+				println(ancestry[i].name);
+			}
+			*/
+
+		chiudiparagrafo();
+
+		
+		paragrafo("Ridefinire filter su array.");
+
+			function filter(array,test)
+			{
+				var passed=[];
+				for(var i=0;i<array.length;i++)
+				{
+					if(test(array[i]))
+					{
+						passed.push(array[i]);
+					}
+				}
+				return passed;
+			}
+
+			println("<b>Nate tra 1990 e 1995 esclusi:</b>");
+			showObj(filter(ancestry,function(person)
+				{
+					return person.born > 1900 && person.born < 1925;
+				}));
+
+			println("<b>Nome specifico:</b>");
+			showObj(ancestry.filter(function(item)
+				{
+					return item.father == "Carel Haverbeke";
+				}));
+
+			println("<b>Over 90:</b>");
+			var overNovanta=filter(ancestry,function(person)
+				{
+					return person.died - person.born > 90;
+				});
+			showObj(overNovanta);
+
+		chiudiparagrafo();
+
+
+		
+		paragrafo("Ridefinire map su array.");
+
+			function map(array,transorm)
+			{
+				var mapped=[];
+				for(var i=0;i<array.length;i++)
+				{
+					mapped.push(transorm(array[i]));
+				}
+				return mapped;
+			}
+
+			var arrayDiNomi=map(overNovanta,function(element)
+			{
+				return element.name;
+			});
+			println(arrayDiNomi.join("-"));
+
+			arrayDiNomi.map(function(item)
+				{
+					println("MAP: "+item);
+				});
+			
+			var p=arrayDiNomi.map(function(item)
+				{
+					return item;
+				});
+			console.log(p);
+
+		chiudiparagrafo();
+
+		paragrafo("Ridefinire reduce su array.");
+
+			function reduce(array,combine,start)
+			{
+				var current=start;
+	  			for (var i = 0; i < array.length; i++)
+	  			{
+	    			current = combine(current, array[i]);
+	  			}
+	  			return current;
+			}
+
+			println("<b>Reduce [1, 2, 3, 4]:</b>");
+			println(reduce([1, 2, 3, 4], function(a, b) 
+				{
+				  	return a + b;
+				}, 0));
+
+			println("<b>Reduce ancestry, prende il nato prima:</b>");
+			println(JSON.stringify(ancestry.reduce(function(min, cur) 
+				{
+				  	if (cur.born < min.born) 
+				  	{
+				  		return cur;
+				  	}
+				  	else
+				  	{
+				  		return min;
+				  	}
+				})));
+
+		chiudiparagrafo();
+
+		var a=[1,2,3,4,5,6,7,8,9,10];
+
+		paragrafo("Filter,Map,Reduce standard per array.");
+
+			function test(item)
+			{
+				if((item>5)&&(item<10)) 
+				{
+					return true;
+				}
+			}
+
+			function transform(item)
+			{
+				return "numero: "+item;
+			}
+
+			function combine(a, b) 
+			{
+			  	return a + b;
+			}
+
+			println(a.filter(test));
+			println(a.map(transform));
+			println(a.reduce(combine,0));
+
+		
+		chiudiparagrafo();	
+
+		paragrafo("Per finire.");
+
+		var byName=[];
+		ancestry.forEach(function(person) 
+			{
+  				byName[person.name] = person;
+			});
+
+		showObj(byName["Philibert Haverbeke"]);
+
+		function reduceAncestors(person, f, defaultValue) 
+		{
+			function valueFor(person) 
+			{
+				if (person == null)
+				{
+					return defaultValue;
+				}
+				else
+				{
+					return f(person, valueFor(byName[person.mother]),valueFor(byName[person.father]));
+				}
+			}
+			return valueFor(person);
+		}
+
+		function sharedDNA(person, fromMother, fromFather) 
+		{
+			if (person.name == "Pauwels van Haverbeke")
+			{
+				return 1;
+			}
+			else
+			{
+				return (fromMother + fromFather) / 2;
+			}
+		}
+
+		println();
+		var ph = byName["Philibert Haverbeke"];
+		println(reduceAncestors(ph, sharedDNA, 0) / 4);
+
+		function countAncestors(person, test) 
+		{
+			function combine(current, fromMother, fromFather) 
+			{
+				var thisOneCounts = current != person && test(current);
+				return fromMother + fromFather + (thisOneCounts ? 1 : 0);
+			}
+			return reduceAncestors(person, combine, 0);
+		}
+		
+		function longLivingPercentage(person) 
+		{
+			var all = countAncestors(person, function(person) 
+				{
+					return true;
+				});
+
+			var longLiving = countAncestors(person, function(person) 
+				{
+					return (person.died - person.born) >= 70;
+				});
+			return longLiving / all;
+		}
+		
+		println(longLivingPercentage(byName["Emile Haverbeke"]));
+
+
+		var theSet = ["Carel Haverbeke", "Maria van Brussel","Donald Duck"];
+		
+		function isInSet(set, person) 
+		{
+  			return set.indexOf(person.name) > -1;
+		}
+
+		console.log(ancestry.filter(function(person) 
+		{
+  			return isInSet(theSet, person);
+		}));
+		console.log(ancestry.filter(isInSet.bind(null, theSet)));
+
+
+		
+	    var fn = function(){
+	        println(this.x);
+	    }
+	    var obj = {
+	        x: 30
+	    }
+
+	    //metodo call
+	    fn.call(obj);
+	     
+	    //metodo bind
+	    var bound = fn.bind(obj);
+	    bound(); 
+
+
+		chiudiparagrafo();			
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>

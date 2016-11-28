@@ -89,6 +89,21 @@
 			println(t[i]);
 		}
 
+		println("Conversione tra oggetto e array.");
+		var obj = {1: 11, 2: 22};
+		var arr = Object.values(obj);
+		var arr1 = Object.keys(obj).map(function (key) { return obj[key]; });
+		var arr2 =[];
+		for( var i in obj ) {
+		    if (obj.hasOwnProperty(i))
+		    {
+		       arr.push(obj[i]);
+		    }
+		}
+		println(arr);
+		println(arr1);
+		println(arr2);
+
 		chiudiparagrafo();	
 	</script>
 

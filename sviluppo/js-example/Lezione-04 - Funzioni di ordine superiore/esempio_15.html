@@ -1,0 +1,211 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_15.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 28-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_15.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Ci sono due modi per programmare del software: uno &egrave; di crearlo tato semplice<br>
+			da non lascia spazio ai difetti, l'altro di crearlo tanto complicato da non riuscire<br>
+			a trovarci difetti."<br>
+		</i>
+		<br>
+		<strong>Tony Hoare</strong><i> Premio Turing 1980</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/ancestry.js"></script>
+	<script type="application/x-javascript">
+
+		function showObj(obj)
+		{
+			for(var value in obj)
+			{
+				if ( typeof obj[value] != "object" ) 
+				{
+					document.write(value+": "+obj[value]+" ");	
+				}
+				else 
+				{
+					document.write("obj["+value+"]=> {");
+					showObj(obj[value]);
+					document.write("}");
+					println();
+				}
+			}
+		}
+
+		infoBrowser();
+		capitolo("Funzioni di ordine superiore");
+		
+		paragrafo("Scope delle variabili");
+
+		var x = 1;
+    	println("x="+x); // 1
+	    if (true) 
+	    {
+			var x = 2;
+			println("x="+x); // 2
+	    }
+    	println("x="+x); // 2
+
+    	x=1;
+		println("<br>x="+x); // 1
+	    function bar()
+	    {
+			var x = 2;
+			println("x="+x); // 2
+	    }
+	    bar();
+    	println("x="+x); // 1
+
+
+    	var maradona = "Un vero campione";
+	    function prova1(){
+	       var maradona = "Un brocco";
+	    }
+	    prova1();
+	    maradona += " con una classe infinita";
+    	console.log(maradona);          
+
+		var maradona = "Un vero capione con una classe infinita";
+    	function prova2(){
+       		maradona = "Un mito anche se qualche volta ha esagerato";
+       		return maradona
+    	}
+    	console.log(prova2());
+    	console.log(maradona);
+
+
+
+		prova3();
+  		function prova3()  		{
+      		console.log('maradona: un mito');
+      	} 
+  		prova3();
+    
+  		//prova4(); //restituisce un errore
+  		var prova4 = function(){
+      		console.log('maradona: un mito');
+      	}
+  		prova4();
+
+    	function prova()
+    	{
+        	var uno='a'
+        	console.log('la variabile locale uno \xE9 andata persa')
+        }
+    	prova();
+    	//console.log(uno); //restituisce un errore
+
+
+ 		var a = 'ciao';
+    	(function() {
+      		console.log(a); 
+		})();
+     
+		var b= 'ciao';
+		(function() {
+		  	console.log(b);
+			var b = 'riciao';
+		})();
+
+		var c=2;
+
+		function foo()
+		{
+			console.log(c);
+			var c=300;
+			console.log(c);
+		}
+
+		foo();
+
+		var xx = 0;            
+		function foo() 
+		{        
+			var yy = 2;           
+			console.log(xx, yy);   
+			function bar() 
+			{      
+				xx = 3;             
+				yy = 4;             
+				zz = 5;     // crea una variabile globale zz       
+			}
+			bar();                   
+			console.log(xx, yy, zz);  
+		}
+		foo();                  
+		console.log(xx, zz);     
+
+
+		chiudiparagrafo();
+
+		paragrafo("Oggetto this: apply,call,bind");
+
+		var persona = {
+     
+  			nome: "Raffaele", 
+    		cognome: "Ficcadenti", 
+     
+    		nomeCognome: function () { 
+        		return this.nome + " " + this.cognome; 
+    		} 
+		};
+
+
+		function saluta0(nomePersona) 
+		{
+    		println("Buongiorno(0) " + nomePersona.call(persona)); 
+		}
+		function saluta1(nomePersona) 
+		{
+    		println("Buongiorno(1) " + nomePersona()); 
+		}
+
+
+		saluta0(function(){
+			return "test";
+		});
+
+		saluta1(function(){
+			return "test";
+		});
+
+		saluta0(persona.nomeCognome);
+		saluta1(persona.nomeCognome.bind(persona));
+
+		chiudiparagrafo();			
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>

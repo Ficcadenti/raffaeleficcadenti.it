@@ -11,7 +11,7 @@
 	# 
 	# HISTORY:
 	# -[Date]-      -[Who]-               -[What]-
-	# 23-11-2016    Ficcadenti Raffaele         
+	# 25-11-2016    Ficcadenti Raffaele         
 	# -
 -->
 
@@ -89,7 +89,7 @@
 		showObj(a);
 		
 		var s=0;
-		a.forEach( function(elementoCorrente)
+		a.forEach(function(elementoCorrente)
 		{
 			s+=elementoCorrente;
 		});
@@ -210,6 +210,56 @@
 		println("incDiCinque="+incDiCinque(10));
 		println("incDiCinque="+incDiCinque(-5));
 		println("incDiCinque="+incDiCinque(2));
+
+		function maggioreDi(n)
+		{
+			return function(m)
+			{
+				return m>n;
+			}
+		}
+
+		var maggioreDiDieci=maggioreDi(10);
+
+		println(maggioreDiDieci(20));
+		println(maggioreDiDieci(2));
+
+		function rumore(f)
+		{
+			return function(args)
+			{
+				console.log("sto chiamando con",args);
+				var val = f(args);
+				console.log("chiamato con ",args," ottenuto",val);
+				return val;
+			}
+		}
+
+		var r=rumore(Boolean)(0);
+		println(r);
+
+		function unless(test, then, altrimenti )
+		{
+			if(!test) then();
+			else altrimenti();
+		}
+
+		function repeat(times,body)
+		{
+			for(var i=0;i<times;i++)
+			{
+				body(i);
+			}
+		}
+
+		repeat(5,function(n)
+			{
+				unless(n%2,function(){
+					println(n+" numero pari");
+				},function(){
+					println(n+" numero dispari");
+				});
+			});
 	
 		chiudiparagrafo();	
 	</script>

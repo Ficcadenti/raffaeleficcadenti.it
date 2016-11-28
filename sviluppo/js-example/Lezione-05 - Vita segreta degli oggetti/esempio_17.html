@@ -1,0 +1,75 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_17.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 28-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_17.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Il problema coi linguaggi orientati agli oggetti &egrave; che si portano dietro tutto<br>
+			quest'ambiente implicito. Vuoi una banana e invece ti trovi con un gorilla<br>
+			che tiene in mano la banana e tutta la giungla."<br>
+		</i>
+		<br>
+		<strong>Joe Armstrong</strong><i> intervistato su Coders at Work</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+
+		function showObj(obj)
+		{
+			for(var value in obj)
+			{
+				if ( typeof obj[value] != "object" ) 
+				{
+					document.write(value+": "+obj[value]+" ");	
+				}
+				else 
+				{
+					document.write("obj["+value+"]=> {");
+					showObj(obj[value]);
+					document.write("}");
+					println();
+				}
+			}
+		}
+
+		infoBrowser();
+		capitolo("La vita segreta degli oggetti");
+		paragrafo("Esempio");
+
+
+		chiudiparagrafo();
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>

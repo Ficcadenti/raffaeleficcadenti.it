@@ -1,0 +1,205 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_16.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 28-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_16.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Ci sono due modi per programmare del software: uno &egrave; di crearlo tato semplice<br>
+			da non lascia spazio ai difetti, l'altro di crearlo tanto complicato da non riuscire<br>
+			a trovarci difetti."<br>
+		</i>
+		<br>
+		<strong>Tony Hoare</strong><i> Premio Turing 1980</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/ancestry.js"></script>
+	<script type="application/x-javascript">
+
+		function showObj(obj)
+		{
+			for(var value in obj)
+			{
+				if ( typeof obj[value] != "object" ) 
+				{
+					document.write(value+": "+obj[value]+" ");	
+				}
+				else 
+				{
+					document.write("obj["+value+"]=> {");
+					showObj(obj[value]);
+					document.write("}");
+					println();
+				}
+			}
+		}
+
+		infoBrowser();
+
+		var ancestry=JSON.parse(ANCESTRY_FILE);
+
+		capitolo("Funzioni di ordine superiore");
+		paragrafo("Esercio 1: Appiattire un array");
+
+		var a=[[1,2,3],[4,5],[6,7]];
+		var b=a.reduce(function (flat, current) 
+			{
+ 				return flat.concat(current);
+			},[]);
+
+		console.log(a);
+		println(b);
+
+		chiudiparagrafo();			
+
+		paragrafo("Esercio 2: Differenza di et\xE0 tra madri e figli");
+
+		function average(array) 
+		{
+  			function plus(a, b) 
+  			{ 
+  				return a + b; 
+  			}
+  			return array.reduce(plus) / array.length;
+		}
+
+		var byName = {};
+		ancestry.forEach(function(person) 
+		{
+  			byName[person.name] = person;
+		});
+
+		var differences = ancestry.filter(function(person) 
+		{
+			return byName[person.mother] != null;
+		}).map(function(person) 
+		{
+  			return person.born - byName[person.mother].born;
+		});	
+
+		console.log(differences);
+
+		println("Et\xE0 media: "+average(differences));
+		chiudiparagrafo();			
+
+		paragrafo("Esercio 3: Speranza di vita storica");
+
+
+		function groupBy(array, groupOf) 
+		{
+			var groups = {};
+			array.forEach(function(element) 
+				{
+					var groupName = groupOf(element);
+					if (groupName in groups)
+					{
+						groups[groupName].push(element);
+					}
+					else
+					{
+						groups[groupName] = [element];
+					}
+				});
+			return groups;
+		}
+
+		var byCentury = groupBy(ancestry, function(person) 
+		{
+			return Math.ceil(person.died / 100);
+		});
+
+		for (var century in byCentury) 
+		{
+			var ages = byCentury[century].map(function(person) 
+			{
+				return person.died - person.born;
+			});
+			println(century + ": " + average(ages));
+		}
+
+		chiudiparagrafo();
+
+		paragrafo("Esercio 4: Tutti e qualcuno");
+
+		function every(array, predicate) 
+		{
+		    for (var i = 0; i < array.length; i++) 
+		    {
+		  		if (!predicate(array[i]))
+		  		{
+		    		return false;
+		    	}
+		  	}
+		  	return true;
+		}
+
+		function some(array, predicate) 
+		{
+		  	for (var i = 0; i < array.length; i++) 
+		  	{
+		    	if (predicate(array[i]))
+		    	{
+		      		return true;
+		    	}
+		  	}
+		  return false;
+		}
+
+		println(every([NaN, NaN, NaN], isNaN));
+		// → true
+		println(every([NaN, NaN, 4], isNaN));
+		// → false
+		println(some([NaN, 3, 4], isNaN));
+		// → true
+		println(some([2, 3, 4], isNaN));
+		// → false
+
+		var a=[1,3,-4,5,6];
+		println("Tutti ["+a+"] positivi ? "+a.every(function(item)
+			{
+				return item>0;
+			}));
+
+		var a=[1,3,4,2,6];
+		println("Almeno ["+a+"] uno=0 ? "+a.some(function(item)
+			{
+				return item==0;
+			}));
+
+
+
+		chiudiparagrafo();
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a>
+	</div>
+
+</body>
+</hmtl>
