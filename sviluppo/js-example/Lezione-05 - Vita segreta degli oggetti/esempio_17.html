@@ -37,29 +37,69 @@
 
 	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
 	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("La vita segreta degli oggetti");
+		paragrafo("Prototipi");
 
-		function showObj(obj)
+		var coniglio={};
+
+		coniglio.dice=function(line){
+			println("Il coniglio dice '"+line+"'");
+		};
+
+		coniglio.dice("ciao");
+
+		function dice(line)
 		{
-			for(var value in obj)
+			println("Il coniglio "+this.type+" dice '"+line+"'");	
+		}
+
+		var coniglioBianco={type:"bianco",dice: dice};
+		var coniglioGrigio={type:"grigio",dice: dice};
+		var coniglioVerde={type:"verde",dice: dice};
+		var coniglioRosso={type:"rosso",dice: dice};
+		var coniglioBlu={type:"blu",dice: dice};
+
+		coniglioBianco.dice("Ciao a tutti");
+		coniglioGrigio.dice("Welcome !!!");
+
+		dice.apply(coniglioVerde,["GRRRRRR!!!"]);
+		var f=dice.bind(coniglioRosso,["Hola"]);
+		f();
+		dice.call(coniglioBlu,"Ho fame");
+
+		var empty={};
+		console.log(empty.toString);
+		console.log(empty.toString());
+		console.log(Object.getPrototypeOf(empty));
+		console.log(Object.getPrototypeOf(empty)==Object.prototype);
+		console.log(Object.getPrototypeOf(Object.prototype));
+
+		console.log(Object.getPrototypeOf(isNaN));
+		console.log(Object.getPrototypeOf([]));
+		console.log(Object.getPrototypeOf(Function.prototype));
+		console.log(Object.getPrototypeOf(Array.prototype));
+
+		var protoConiglio={
+			type: "prototipo",
+			dice: function(line)
 			{
-				if ( typeof obj[value] != "object" ) 
-				{
-					document.write(value+": "+obj[value]+" ");	
-				}
-				else 
-				{
-					document.write("obj["+value+"]=> {");
-					showObj(obj[value]);
-					document.write("}");
-					println();
-				}
+				println("Il coniglio "+this.type+" dice '"+line+"'")	
 			}
 		}
 
-		infoBrowser();
-		capitolo("La vita segreta degli oggetti");
-		paragrafo("Esempio");
+		protoConiglio.dice("io sono il prototipo");
 
+		var coniglioCattivo=Object.create(protoConiglio);
+		coniglioCattivo.type="cattivo";
+		coniglioCattivo.eta=5;
+		coniglioCattivo.dice("vi mangio tutti !!!!");
+
+		console.log(protoConiglio);
+		console.log(coniglioCattivo);
+
+		console.log(protoConiglio.type);
+		console.log(coniglioCattivo.type);
 
 		chiudiparagrafo();
 	</script>

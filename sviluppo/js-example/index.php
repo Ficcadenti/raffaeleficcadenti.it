@@ -25,14 +25,13 @@ http://www.w3.org/TR/html4/frameset.dtd>
 		</style>
 		</style>
 	</head>
-	<body>
+		<body>
 		<h2><strong> Repository per lezioni/esempi ECMAScript® (JavaScript) </strong></h2>
 		(c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br>
 		Ho cercato di raccogliere in questo repository, le basi della programmazione ECMAScript® (JavaScript).
 		Per ogni correzione o suggerimento, non esitate a scrivermi.
 		Buon 'coding'.
 		Raffaele.
-		<br><br>
 		<!--
 		<p>
 			<b>Prima di partire</b><br><br>
@@ -98,7 +97,20 @@ http://www.w3.org/TR/html4/frameset.dtd>
 			<li><strong>LEZIONE N. 5</strong> - Vita segrata degli oggetti.
 				<ul>
 					<br>
-					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_17.html" target="_blank">esempio_17.html</a></b>: Esempio.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_17.html" target="_blank">esempio_17.html</a></b>: Protptipi.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_18.html" target="_blank">esempio_18.html</a></b>: Costruttori.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_19.html" target="_blank">esempio_19.html</a></b>: ECMAScript 6 - Definire un oggetto con 'class'.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_20.html" target="_blank">esempio_20.html</a></b>: Reflection.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_21.html" target="_blank">esempio_21.html</a></b>: Serializzare oggetti.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-05 - Vita segreta degli oggetti/esempio_22.html" target="_blank">esempio_22.html</a></b>: Esercizi.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 6</strong> - Eccezioni.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Eccezioni/esempio_23.html" target="_blank">esempio_23.html</a></b>: Esempio.</li>
 					<br>
 				</ul>
 			</li>

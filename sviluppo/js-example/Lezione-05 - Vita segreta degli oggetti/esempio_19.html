@@ -1,0 +1,116 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_19.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 28-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_19.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Il problema coi linguaggi orientati agli oggetti &egrave; che si portano dietro tutto<br>
+			quest'ambiente implicito. Vuoi una banana e invece ti trovi con un gorilla<br>
+			che tiene in mano la banana e tutta la giungla."<br>
+		</i>
+		<br>
+		<strong>Joe Armstrong</strong><i> intervistato su Coders at Work</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("La vita segreta degli oggetti");
+		
+		paragrafo("ECMASript 6 - Definire un oggetto con la parola chiave 'class'");
+			class Persona3 
+			{
+	 
+			    constructor(nome, cognome) 
+			    {
+			        this.nome = nome;
+			        this.cognome = cognome;
+			        this.email = "";
+			        this.indirizzo = "";
+			    } 
+			     
+			    mostraNomeCompleto() 
+			    {
+			        return this.nome + " " + this.cognome;
+			    }
+
+			    get email() 
+			    {
+			    	return this._email;
+			    }
+
+    			set email(value) 
+    			{ 
+					var emailRegExp = /\w+@\w+\.\w{2,4}/i; 
+					if (emailRegExp.test(value)) 
+					{ 
+						this._email = value;
+					} 
+					else 
+					{ 
+						println("l'e-mail inserita ["+value+"] non \xE9 valida!"); 
+					}
+				}
+
+			}
+
+			class programmatore3 extends Persona3 
+			{
+   
+			    constructor(nome, cognome) 
+			    {
+			        super(nome, cognome);
+			        this.linguaggiConosciuti = []; 
+			    }
+			}
+
+			var grecoFrancesco=new Persona3("Francesco","Greco");
+			grecoFrancesco.email="greco.francesco@gmail.com";
+			stampaObj("grecoFrancesco",grecoFrancesco);
+			console.log(grecoFrancesco);
+
+			var p4=new programmatore3("Francesco","Greco");
+			p4.linguaggiConosciuti.push("Java");
+			stampaObj("p4",p4);
+			console.log(p4);			
+
+		chiudiparagrafo();
+		paragrafo("Reflection");
+		chiudiparagrafo();
+
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="./tab1.html" target="_blank">Descrittori delle propriet&agrave;</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a>
+	</div>
+
+</body>
+</hmtl>

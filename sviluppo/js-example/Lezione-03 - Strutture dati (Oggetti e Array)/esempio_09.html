@@ -51,11 +51,24 @@
 			}
 		}
 
+		var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+		var ARGUMENT_NAMES = /([^\s,]+)/g;
+
+		function getParamNames(func) 
+		{
+			var fnStr = func.toString().replace(STRIP_COMMENTS, '');
+			var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+			if(result === null)
+			 result = [];
+			return result;
+		}
+
+
 		function noArguments()
 		{
 			println("function 'noArguments'");
 			showArguments(arguments);
-			
+
 		}
 
 		function threeArguments(a,b,c)
@@ -64,8 +77,11 @@
 			showArguments(arguments);
 		}
 
-		noArguments(1,2,3);
+		var a=10;
+		noArguments(a,2,3);
 		threeArguments();
+
+		console.log(getParamNames(function (a,b212,c,d){}));
 
 		
 

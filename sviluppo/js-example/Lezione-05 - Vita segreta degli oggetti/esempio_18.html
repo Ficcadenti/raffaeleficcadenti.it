@@ -1,0 +1,339 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_18.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 28-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_18.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Il problema coi linguaggi orientati agli oggetti &egrave; che si portano dietro tutto<br>
+			quest'ambiente implicito. Vuoi una banana e invece ti trovi con un gorilla<br>
+			che tiene in mano la banana e tutta la giungla."<br>
+		</i>
+		<br>
+		<strong>Joe Armstrong</strong><i> intervistato su Coders at Work</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("La vita segreta degli oggetti");
+		paragrafo("Costruttori");
+
+			function coniglio(type)
+			{
+				this.type=type;
+				return this;
+			}
+
+			var coniglioGiallo=new coniglio("giallo");
+			var coniglioVerde=new coniglio("verde");
+
+			coniglio.prototype.dice = function(line){
+					println("Il coniglio "+this.type+" dice '"+line+"'");
+				};
+
+			coniglioGiallo.dice("Arieccomi !!!!!");
+			coniglioVerde.dice("Ho mal di pancia !!!!!");
+
+			console.log(coniglioGiallo);
+
+			coniglio.prototype.type="coniglio";
+			println("coniglioGiallo.type="+coniglioGiallo.type);
+			println("coniglio.type="+coniglio.prototype.type);
+
+
+			function Persona(nome,cognome) 
+			{
+					'use strict'; // l’oggetto this risulta undefined durante l’esecuzione del codice
+				    this.nome = nome;
+				    this.cognome = cognome;
+				    this.indirizzo = "";
+				    this.email = "";
+				    this.mostraNomeCompleto = function() {return this.nome+this.cognome};
+				    this.calcolaCodiceFiscale = function() {return "DA DEFINIRE"};
+			}
+
+			var marioRossi=new Persona("Mario","Rossi");
+			var raffaeleFiccadenti=new Persona("Raffaele","Ficcadenti");
+			raffaeleFiccadenti.telefono = "3404020010"; // proprietà solo di raffaeleFiccadenti
+			Persona.prototype.citta = "Roma"; // Proprietà di tutti gli oggetti Persona
+
+			stampaObj("marioRossi",marioRossi);
+			stampaObj("raffaeleFiccadenti",raffaeleFiccadenti);
+
+			console.log(marioRossi);
+			console.log(raffaeleFiccadenti);
+
+		chiudiparagrafo();
+
+		paragrafo("Ereditariet\xE0 prototipale");
+			String.prototype.padLeft = function(width, char)  // sto aggiungendo una funzione al prototipo dll'oggetto String
+			{
+			    var result = this;
+			    char = char || " ";
+			    if (this.length < width)  
+			    {
+			        result = new Array(width - this.length + 1).join(char) + this;
+			    }
+			    return result;
+			};
+
+			println("abc".padLeft(10, "_"));        //"xxxxxxxabc"
+
+		chiudiparagrafo();
+
+			paragrafo("Interferenza tra prototipi");
+			Object.prototype.nonmap="ciao";
+
+			Object.defineProperty(Object.prototype, "nonmap_quasiok",{enumerable:false, value:"mi hai trovato!!!"});
+
+			var map={};
+			function storePhi(event,phi)
+			{
+				map[event]=phi;
+			}
+			storePhi("pizza",10);
+			storePhi("birra",1);
+			storePhi("vino",13);
+
+			
+			for(var evt in map)
+			{
+				if(map.hasOwnProperty(evt))
+				{
+					var phi=map[evt];
+					println("phi("+evt+")= "+phi);
+				}
+			}
+
+			println(map.nonmap_quasiok);
+
+			println("nonmap" in map);
+			println("toString" in map);
+			println("nonmap_quasiok" in map);
+			println(map.hasOwnProperty("nonmap_quasiok"));
+			
+		chiudiparagrafo();
+
+		paragrafo("Oggetti senza prototipo");
+
+			var map1=Object.create(null);
+			function storePhi1(event,phi)
+			{
+				map1[event]=phi;
+			}
+			storePhi1("pizza",10);
+			storePhi1("birra",1);
+			storePhi1("vino",13);
+
+			for(var evt in map1)
+			{
+				var phi=map1[evt];
+				println("phi("+evt+")= "+phi);
+			}
+
+			println("nonmap" in map1);
+			println("toString" in map1);
+			println("nonmap_quasiok" in map1);
+
+
+			function Contatto(nome,cognome,email)
+			{
+				'use strict'; // l’oggetto this risulta undefined durante l’esecuzione del codice
+				this.nome=nome;
+				this.cognome=cognome;
+				this.email=email;
+				return this;
+			};
+
+			var c=new Contatto("Raffaele","Ficcadenti","raffaele.ficcadenti@gmail.com");
+			var c1={nome:"Raffaele",cognome:"Ficcadenti",email:"raffaele.ficcadenti@gmail.com"};
+			var c2=Object.create(null);
+
+			function addContatto(obj,nome,cognome,email)
+			{
+				obj.nome=nome;
+				obj.cognome=cognome;
+				obj.email=email;
+			};
+
+			addContatto(c2,"Raffaele","Ficcadenti","raffaele.ficcadenti@gmail.com");
+
+
+			console.log(c);
+			console.log(c1);
+			console.log(c2);
+
+			function Persona2(nome, cognome) 
+			{
+				'use strict'; // l’oggetto this risulta undefined durante l’esecuzione del codice
+				this.nome = (nome || "");
+				this.cognome = (cognome ||"");
+			}
+
+			Persona2.prototype.indirizzo = "";
+			Persona2.prototype.email = "";
+			Persona2.prototype.mostraNomeCompleto = function() {return this.nome + " " + this.cognome;};
+			Persona2.prototype.calcolaCodiceFiscale = function() {return "DA DEFINIRE";};
+
+			var valeriaGreco=Object.create(Persona2.prototype,
+						{ 
+                            nome:   { 	value        : "Valeria", 
+            							writable     : true,
+            							configurable : true,
+            							enumerable   : true
+            						},
+
+                            cognome:{ 	value        : "Greco", 
+            							writable     : true,
+            							configurable : true,
+            							enumerable   : true 
+            						},
+
+            				_email: { 	value        : "", 
+            							writable     : true, 
+            							configurable : true,
+            							enumerable   : false 
+            						}, 
+
+							email: {	get: function() 
+									    {
+									            return this._email;
+									    }, 
+									     
+									    set: function(value) 
+									    { 
+									        var emailRegExp = /\w+@\w+\.\w{2,4}/i;
+									         
+									        if (emailRegExp.test(value)) 
+									        { 
+									            this._email = value; 
+									        } else 
+									        { 
+									            println("Email non valida ["+value+"]"); 
+									        }
+									    }
+									},        						
+
+            				contatto: {
+                						configurable: true,
+                						enumerable   : true ,
+                						get: function() {return this.nome + "[" + this._email +"]";}
+            						}
+                        });			
+			valeriaGreco.email="valeria5.greco@gmail.com";
+
+			var p; 
+			for (p in valeriaGreco) 
+			{
+				println(p+": "+valeriaGreco[p]); 
+			}	
+
+
+			stampaObj("valeriaGreco",valeriaGreco);
+			println("Nome completo = "+valeriaGreco.mostraNomeCompleto());
+			println("Contatto = "+valeriaGreco.contatto);
+			console.log(valeriaGreco);
+
+			/* Oggetto programmatore derivato da Persona2 */
+			function programmatore(nome, cognome)
+			{
+			    Persona2.call(this, nome, cognome);
+			    this.linguaggiConosciuti = [];
+			}
+ 
+			programmatore.prototype = Object.create(Persona2.prototype,{ 
+                           
+
+            				_email: { 	value        : "", 
+            							writable     : true, 
+            							configurable : true,
+            							enumerable   : false 
+            						}, 
+
+							email: {	get: function() 
+									    {
+									            return this._email;
+									    }, 
+									     
+									    set: function(value) 
+									    { 
+									        var emailRegExp = /\w+@\w+\.\w{2,4}/i;
+									         
+									        if (emailRegExp.test(value)) 
+									        { 
+									            this._email = value; 
+									        } else 
+									        { 
+									            println("Email non valida ["+value+"]"); 
+									        }
+									    }
+									},        						
+
+            				contatto: {
+                						configurable: true,
+                						enumerable   : true ,
+                						get: function() {return this.nome + "[" + this._email +"]";}
+            						}
+                        });
+
+			var p3=new programmatore("Raffaele","Ficcadenti");
+
+			var p; 
+			infoObj(p3);
+			println("<b>Propriet\xE0 in p3</b>");
+			for (p in p3) 
+			{
+				//if(p3.hasOwnProperty(p))
+					println("----->" +p+": "+p3[p]); 
+			}	
+
+
+			p3.email="raffaele.ficcadenti@gmail.com";
+			p3.linguaggiConosciuti.push("c++");
+			p3.linguaggiConosciuti.push("Java");
+			p3.linguaggiConosciuti.push("PHP");
+			p3.linguaggiConosciuti.push("ECMASript");
+
+			println("email:"+p3.email);
+
+			stampaObj("p3",p3);
+			console.log("p3",p3);
+
+		chiudiparagrafo();
+
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="./tab1.html" target="_blank">Descrittori delle propriet&agrave;</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a>
+	</div>
+
+</body>
+</hmtl>

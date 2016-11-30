@@ -78,7 +78,22 @@ Raffaele.
 	<li><strong>LEZIONE N. 5</strong> - Vita segrata degli oggetti.
 		<ul>
 			<br>
-			<li><b>esempio_17.html</b>: Esempio.</li>
+			<li><b>esempio_17.html</b>: Prototipi.</li>
+			<br>
+			<li><b>esempio_18.html</b>: Costruttori.</li>
+			<br>
+			<li><b>esempio_19.html</b>: ECMAScript 6 - Definire un oggetto con 'class'.</li>
+			<br>
+			<li><b>esempio_20.html</b>: Reflection.</li>
+			<br>
+			<li><b>esempio_20.html</b>: Serializzare oggetti.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 6</strong> - Eccezioni.
+		<ul>
+			<br>
+			<li><b>esempio_22.html</b>: Esempio.</li>
 			<br>
 		</ul>
 	</li>

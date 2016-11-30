@@ -1,0 +1,213 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_20.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 29-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_20.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Il problema coi linguaggi orientati agli oggetti &egrave; che si portano dietro tutto<br>
+			quest'ambiente implicito. Vuoi una banana e invece ti trovi con un gorilla<br>
+			che tiene in mano la banana e tutta la giungla."<br>
+		</i>
+		<br>
+		<strong>Joe Armstrong</strong><i> intervistato su Coders at Work</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_calendar.js"></script>
+	<script type="application/x-javascript">
+		infoBrowser();
+		capitolo("Ancora sugli oggetti");
+		
+		paragrafo("Reflection");
+			class Persona
+			{
+			    constructor(nome, cognome) 
+			    {
+			        this.nome = nome;
+			        this.cognome = cognome;
+			        this._email = "";
+			        this.indirizzo = "";
+			        this.mostraNomeCompleto = function() {return this.nome + " " + this.cognome;};
+			    } 
+			     
+			    nomeCompleto() 
+			    {
+			        return this.nome + " " + this.cognome;
+			    }
+
+			    getClassName() 
+			    {
+            		return Persona.name;
+        		}
+
+			    get email() 
+			    {
+			    	return this._email;
+			    }
+
+    			set email(value) 
+    			{ 
+					var emailRegExp = /\w+@\w+\.\w{2,4}/i; 
+					if (emailRegExp.test(value)) 
+					{ 
+						this._email = value;
+					} 
+					else 
+					{ 
+						println("l'e-mail inserita ["+value+"] non \xE9 valida!"); 
+					}
+				}
+
+			}
+
+			class programmatore extends Persona
+			{
+   
+			    constructor(nome, cognome) 
+			    {
+			        super(nome, cognome);
+			        this.linguaggiConosciuti = []; 
+			    }
+
+			    getClassName() 
+			    {
+            		return programmatore.name;
+        		}
+        		pippo()
+        		{
+        			return "ciao";
+        		}
+			}
+
+
+			println();
+			var grecoFrancesco=new Persona("Francesco","Greco");
+			println("getClassName="+grecoFrancesco.getClassName());
+			println("nomeCompleto="+grecoFrancesco.nomeCompleto());
+			println("mostraNomeCompleto="+grecoFrancesco.mostraNomeCompleto());
+			var propertyNames = Object.getOwnPropertyNames(Object.getPrototypeOf(grecoFrancesco));
+			var propertyNames2 = Object.getOwnPropertyNames(programmatore.prototype);
+			console.log("1",propertyNames);
+			console.log("2",propertyNames2);
+			console.log("3",typeof grecoFrancesco);
+			console.log("4",grecoFrancesco.constructor.name);
+
+			grecoFrancesco.email="greco.francesco@gmail.com";
+
+
+			stampaObj("grecoFrancesco",grecoFrancesco);
+			infoObj(grecoFrancesco);
+
+
+			println();
+			
+			
+			
+
+			var prg=new programmatore("Francesco","Greco");
+			println("getClassName="+prg.getClassName());
+			println("nomeCompleto="+prg.nomeCompleto());
+			println("mostraNomeCompleto="+prg.mostraNomeCompleto());
+			prg.linguaggiConosciuti.push("Java");
+
+			var propertyNames3 = Object.getOwnPropertyNames(Object.getPrototypeOf(prg));
+			console.log("5",prg.constructor.name);
+			console.log("6",propertyNames3);
+
+
+
+			stampaObj("prg",prg);
+
+			console.log("prg",prg);	
+			console.log("prototipo",Object.getPrototypeOf(prg));
+			infoObj(prg);
+
+		chiudiparagrafo();
+
+		paragrafo("Symbol");
+
+			var x1 = Symbol("Raffaele");
+			var x2 = Symbol("Raffaele");
+			console.log(x1); //risultato: Symbol()
+			console.log(typeof x1);  //risultato: symbol
+
+			println("x1===x2 ? "+(x1===x2));
+			println("x1="+x1.toString());
+			println("x2="+x2.toString());
+
+			var x3 = Symbol.for("Valeria");
+			var x4 = Symbol.for("Valeria");
+ 
+			println("x3===x4 ? "+(x3===x4));
+			println("x3="+x3.toString());
+			println("x4="+x4.toString());
+
+			var x3s = Symbol.keyFor(x3);
+			println("x3s="+x3s);
+
+			var item1 = { descrizione: "Prodotto A", prezzo: 24.5 };
+			item1.id=Symbol();
+
+			var item2 = { descrizione: "Prodotto A", prezzo: 24.5 };
+			item2.id=Symbol();
+
+			println(item1.id==item2.id);
+
+			/* utilizzo di Symbol per enumerazioni, vedi file ../assets/lib/my_scripts.js */
+
+			println();
+			println("Lunedi \xE9 lavorativo ? "+isGiornoLavorativo(giorniDellaSettimana.lunedi)); //true
+			println("Sabato \xE9 lavorativo ? "+isGiornoLavorativo(giorniDellaSettimana.sabato)); //false
+			println("8 \xE9 lavorativo ? "+isGiornoLavorativo(8));
+
+			println();
+			println("<b>Aggiunta di una propriet\xE0 univoca ad un oggetto</b>");
+			
+			var dataControllo = Symbol();
+			item2[dataControllo]=new Date();
+			println("DataControllo: "+item2[dataControllo]);
+
+			var props = Object.getOwnPropertySymbols(item2); 
+			console.log(props.length);    // risultato: 1
+			console.log(item2[props[0]]);  // risultato: valore della data assegnata
+
+
+
+		chiudiparagrafo();
+
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="./tab1.html" target="_blank">Descrittori delle propriet&agrave;</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a>
+	</div>
+
+</body>
+</hmtl>
