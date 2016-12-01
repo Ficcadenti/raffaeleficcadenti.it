@@ -25,7 +25,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 		</style>
 		</style>
 	</head>
-		<body>
+	<body>
 		<h2><strong> Repository per lezioni/esempi ECMAScript® (JavaScript) </strong></h2>
 		(c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br>
 		Ho cercato di raccogliere in questo repository, le basi della programmazione ECMAScript® (JavaScript).
@@ -111,6 +111,14 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				<ul>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Eccezioni/esempio_23.html" target="_blank">esempio_23.html</a></b>: Esempio.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 7</strong> - Vita Elettronica.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-07 - Vita elettronica/esempio_24.html" target="_blank">esempio_24.html</a></b>: Esempio.</li>
 					<br>
 				</ul>
 			</li>

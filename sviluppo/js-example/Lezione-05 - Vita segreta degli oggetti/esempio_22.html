@@ -36,17 +36,291 @@
 	<hr>
 
 	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/mountains.js"></script>
 	<script type="application/x-javascript">
 		infoBrowser();
 		capitolo("Ancora sugli oggetti");
 
-		paragrafo("Esercizio 1: ");
+		paragrafo("Esercizio 1: Layout di una tabella");
+
+		function rowHeights(rows) 
+		{
+			return rows.map(function(row) 
+			{
+				return row.reduce(function(max, cell) 
+				{
+					return Math.max(max, cell.minHeight());
+				}, 0);
+			});
+		}
+
+		function colWidths(rows) 
+		{
+			return rows[0].map(function(_, i) 
+			{
+				return rows.reduce(function(max, row) 
+				{
+					return Math.max(max, row[i].minWidth());
+				}, 0);
+			});
+		}
+
+		function drawTable(rows) 
+		{
+			var heights = rowHeights(rows);
+			var widths = colWidths(rows);
+
+			function drawLine(blocks, lineNo) 
+			{
+				return blocks.map(function(block) 
+				{
+					return block[lineNo];
+				}).join(" ");
+			}
+
+			function drawRow(row, rowNum) 
+			{
+				var blocks = row.map(function(cell, colNum) 
+				{
+					return cell.draw(widths[colNum], heights[rowNum]);
+				});
+				return blocks[0].map(function(_, lineNo) 
+				{
+					return drawLine(blocks, lineNo);
+				}).join("\n");
+			}
+
+  			return rows.map(drawRow).join("\n");
+		}
+
+		function repeat(string, times) 
+		{
+			var result = "";
+			for (var i = 0; i < times; i++)
+			{
+				result += string;
+			}
+			return result;
+		}
+
+		function TextCell(text) 
+		{
+			this.text = text.split("\n");
+		}
+
+		TextCell.prototype.minWidth = function() 
+		{
+			return this.text.reduce(function(width, line) 
+			{
+				return Math.max(width, line.length);
+			}, 0);
+		};
+
+		TextCell.prototype.minHeight = function() 
+		{
+			return this.text.length;
+		};
+
+		TextCell.prototype.draw = function(width, height) 
+		{
+			var result = [];
+			for (var i = 0; i < height; i++) 
+			{
+				var line = this.text[i] || "";
+				result.push(line + repeat(" ", width - line.length));
+			}
+			return result;
+		};
+
+		function UnderlinedCell(inner) 
+		{
+			this.inner = inner;
+		}
+
+		UnderlinedCell.prototype.minWidth = function() 
+		{
+			return this.inner.minWidth();
+		};
+
+		UnderlinedCell.prototype.minHeight = function() 
+		{
+			return this.inner.minHeight() + 1;
+		};
+
+		UnderlinedCell.prototype.draw = function(width, height) 
+		{
+			return this.inner.draw(width, height - 1).concat([repeat("-", width)]);
+		};
+
+		function dataTable(data) 
+		{
+			var keys = Object.keys(data[0]);
+			var headers = keys.map(function(name) 
+			{
+				return new UnderlinedCell(new TextCell(name));
+			});
+
+			var body = data.map(function(row) 
+			{
+				return keys.map(function(name) 
+				{
+					return new TextCell(String(row[name]));
+				});
+			});
+
+			return [headers].concat(body);
+		}
+
+
+		var rows = [];
+		for (var i = 0; i < 5; i++) 
+		{
+			var row = [];
+			for (var j = 0; j < 5; j++) 
+			{
+				if ((j + i) % 2 == 0)
+				{
+					row.push(new TextCell("##"));
+				}
+				else
+				{
+					row.push(new TextCell("  "));
+				}
+			}
+			rows.push(row);
+		}
+
+		print("<pre>");
+		print(drawTable(rows));
+		print("</pre>");
+
+		print("<pre>");
+		print(drawTable(dataTable(MOUNTAINS)));
+		print("</pre>");
+
+
 		chiudiparagrafo();
 		
-		paragrafo("Esercizio 2: ");
+		paragrafo("Esercizio 2: Un tipo Vettore");
+
+		var v1=new Vector_p(1, 2);
+		var v2=new Vector_p(2, 3);
+		var v3=v1.plus(v2);
+		var v4=v1.minus(v2);
+
+		stampaObj("v1",v1);
+		stampaObj("v2",v2);
+		stampaObj("v3",v3);
+		stampaObj("v4",v4);
+		console.log(v1,v2,v3,v4);
+
+		println();
+		println("length <b>v1</b>: "+v1.length);
+		println("length <b>v2</b>: "+v2.length);
+		println("length <b>v3</b>: "+v3.length);
+		println("length <b>v4</b>: "+v4.length);
+
+		var v5=new Vector(1, 2);
+		var v6=new Vector(2, 3);
+		var v7=v5.plus(v6);
+		stampaObj("v5",v5);
+		stampaObj("v6",v6);
+		stampaObj("v7",v7);
+		infoObj(v7);
+		console.log(v5,v6,v7);
+
+		
 		chiudiparagrafo();
 
-		paragrafo("Esercizio 3: ");
+		paragrafo("Esercizio 3: Un'altra cella");
+
+		function StretchCell(inner, width, height) 
+		{
+			this.inner = inner;
+			this.width = width;
+			this.height = height;
+		}
+
+		StretchCell.prototype.minWidth = function() 
+		{
+			return Math.max(this.width, this.inner.minWidth());
+		};
+	
+		StretchCell.prototype.minHeight = function() 
+		{
+			return Math.max(this.height, this.inner.minHeight());
+		};
+		
+		StretchCell.prototype.draw = function(width, height) 
+		{
+			return this.inner.draw(width, height);
+		};
+
+		var sc = new StretchCell(new TextCell("abc"), 1, 2);
+		println(sc.minWidth());
+		println(sc.minHeight());
+		println("<pre>");
+		println("["+sc.draw(3, 2)+"]");
+		println("</pre>");
+
+		chiudiparagrafo();
+
+		paragrafo("Esercizio 4: Interfaccia per sequenze");
+
+		function logFive(sequence) 
+		{
+			while(sequence.next())
+			{
+				println(sequence.current());
+			}
+		}
+
+		function ArraySeq(array) 
+		{
+			this.pos = -1;
+			this.array = array;
+		}
+
+		ArraySeq.prototype.next = function() 
+		{
+			if (this.pos >= this.array.length - 1)
+			{
+				return false;
+			}
+			this.pos++;
+			return true;
+		};
+
+		ArraySeq.prototype.current = function() 
+		{
+			return this.array[this.pos];
+		};
+
+		function RangeSeq(from, to) 
+		{
+			this.pos = from - 1;
+			this.to = to;
+		}
+
+		RangeSeq.prototype.next = function() 
+		{
+			if (this.pos >= this.to)
+			{
+				return false;
+			}
+			this.pos++;
+			return true;
+		};
+
+		RangeSeq.prototype.current = function() 
+		{
+			return this.pos;
+		};
+
+		logFive(new ArraySeq([1, 2]));
+		logFive(new RangeSeq(100, 112));
+
 		chiudiparagrafo();
 	</script>
 
