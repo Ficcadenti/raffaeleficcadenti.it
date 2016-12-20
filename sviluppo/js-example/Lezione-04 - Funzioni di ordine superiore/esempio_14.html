@@ -61,14 +61,16 @@
 		capitolo("Funzioni di ordine superiore");
 		paragrafo("JSON");
 
-			var json_obj={"nome":"Raffaele", "cognome":"Ficcadenti", "email":"raffaele.ficcadenti@gmail.com"};
+			var json_obj={"nome":{"nome":"Raffaele","sopranome":"Baffo"}, "cognome":"Ficcadenti", "email":["raffaele.ficcadenti@gmail.com","rficcad@tin.it"]};
 			var str=JSON.stringify(json_obj);
 
 			println(str);
 
-			println(JSON.parse(str).nome);
+			println(JSON.parse(str).nome.nome);
+			println(JSON.parse(str).nome.sopranome);
 			println(JSON.parse(str).cognome);
-			println(JSON.parse(str).email);
+			println(JSON.parse(str).email[0]);
+			println(JSON.parse(str).email[1]);
 
 			var ancestry=JSON.parse(ANCESTRY_FILE);
 			println(ancestry.length);

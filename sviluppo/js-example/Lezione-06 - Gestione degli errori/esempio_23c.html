@@ -1,0 +1,162 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_23c.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 30-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_23c.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Il debugging &egrave; due volte pi&ugrave; difficile di scrivere il codice. Pertanto, se<br>
+			scrivete codice sfruttando al massimo le vostre capacit&agrave;, per definizione<br>
+			non siete abbastanza intelligenti per fare il debugging."<br>
+		</i>
+		<br>
+		<strong>Brian Kernighan e P.J Plauger</strong><i> The Elements of Programming Style</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_error.js"></script>
+	<script type="application/x-javascript">
+		"use strict";
+
+		infoBrowser();
+		capitolo("Gestione degli errori");
+		
+		paragrafo("Esercizio 1: Riprova");
+
+		function MultiplicatorUnitFailure() {};
+
+		function primitiveMultiply(a, b) 
+		{
+  			if (Math.random() < 0.5)
+  			{
+    			return a * b;
+  			}
+  			else
+  			{
+    			throw new MultiplicatorUnitFailure();
+  			}
+		}
+
+		function reliableMultiply(a, b) 
+		{
+  			for (;;) 
+  			{
+	    		try 
+	    		{
+	      			return primitiveMultiply(a, b);
+	    		} 
+	    		catch (e) 
+	    		{
+	    			if(e instanceof MultiplicatorUnitFailure)
+	    			{
+	    				console.log("la funzione primitiveMultiply ha fallito: ",e);
+	    			}
+	    			else if (!(e instanceof MultiplicatorUnitFailure))
+		      		{
+		        		throw e;
+		      		}
+	    		}
+  			}
+		}
+
+		println(reliableMultiply(8,8));
+		chiudiparagrafo();
+
+
+		paragrafo("Esercizio 2: La scatola chiusa");
+
+		var box = 
+		{
+  			locked: true,
+  			unlock: function() 
+  			{
+  				this.locked = false; 
+  			},
+  			lock: function() 
+  			{ 
+  				this.locked = true;  
+  			},
+  			_content: [],
+  			
+  			get content() 
+  			{
+    			if (this.locked) 
+    			{
+    				throw new Error("Locked!");
+    			}
+    			return this._content;
+  			}
+		};
+
+		function withBoxUnlocked(body) 
+		{
+			var locked = box.locked;
+			if (!locked)
+			{
+				return body();
+			}
+
+			box.unlock();
+			try 
+			{
+				return body();
+			} 
+			finally 
+			{
+				box.lock();
+			}
+		}
+
+
+		withBoxUnlocked(function() {box.content.push("Eccomi");});
+		console.log(box);
+		try 
+		{
+  			withBoxUnlocked(function() {
+    									throw new Error("genero un eccezione");
+  										});
+		} 
+		catch (e) 
+		{
+  			console.log("Error:", e);
+  			console.log(box);
+  			chiudiparagrafo();
+		}
+
+		chiudiparagrafo();
+
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a><br>
+		
+	</div>
+
+</body>
+</hmtl>

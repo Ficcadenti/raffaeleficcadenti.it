@@ -4,9 +4,11 @@ http://www.w3.org/TR/html4/frameset.dtd>
 <?php
 	$path_sviluppo="../sviluppo/js-example/";
 ?>
+
 <html>
 	<head>
-		<title>Corso PHP</title>
+		<title>Corso ECMAScript® (JavaScript)</title>
+		<link rel="icon" href="./assets/media/favicon.png">
 		<style>
 			@import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
 			.disabled {
@@ -107,10 +109,13 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				</ul>
 			</li>
 
-			<li><strong>LEZIONE N. 6</strong> - Eccezioni.
+			<li><strong>LEZIONE N. 6</strong> - Gestione degli errori.
 				<ul>
 					<br>
-					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Eccezioni/esempio_23.html" target="_blank">esempio_23.html</a></b>: Esempio.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Gestione degli errori/esempio_23.html" target="_blank">esempio_23.html</a></b>: Eccezioni.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Gestione degli errori/esempio_23a.html" target="_blank">esempio_23a.html</a></b>: Usiamo strict.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Gestione degli errori/esempio_23b.html" target="_blank">esempio_23b.html</a></b>: Asserzioni.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-06 - Gestione degli errori/esempio_23c.html" target="_blank">esempio_23c.html</a></b>: Esercizi.</li>
 					<br>
 				</ul>
 			</li>
@@ -119,6 +124,25 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				<ul>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-07 - Vita elettronica/esempio_24.html" target="_blank">esempio_24.html</a></b>: Esempio.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 8</strong> - Espressioni regolari.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-08 - Espressioni regolari/esempio_25.html" target="_blank">esempio_25.html</a></b>: Iniziamo.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-08 - Espressioni regolari/esempio_26.html" target="_blank">esempio_26.html</a></b>: Modificatori.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-08 - Espressioni regolari/esempio_27.html" target="_blank">esempio_27.html</a></b>: Analizzare un file INI.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-08 - Espressioni regolari/esempio_28.html" target="_blank">esempio_28.html</a></b>: Esercizi.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 9</strong> - Moduli.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-09 - Moduli/esempio_29.html" target="_blank">esempio_29.html</a></b>: Esempio.</li>
 					<br>
 				</ul>
 			</li>

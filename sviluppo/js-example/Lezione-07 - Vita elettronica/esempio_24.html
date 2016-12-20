@@ -36,6 +36,7 @@
 	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
 	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
 	<script type="application/x-javascript">
+		"use strict";
 		infoBrowser();
 		function stampaArray(arr)
         {
@@ -47,20 +48,22 @@
         	print("</pre>");
         };
 
+
+
 		capitolo("Vita elettronica");
 		
 		paragrafo("Il mondo");
 		var plan = [	"############################",
         			    "#      #    #      o      ##",
             			"#                          #",
-            			"#    o     #####           #",
-            			"##         #   #    ##     #",
-            			"###    o      ##     #  o  #",
-            			"#           ###      #     #",
-            			"#   ####          o        #",
-            			"#   ##       o             #",
-            			"# o  #         o       ### #",
-            			"#    #    o                #",
+            			"#          #####           #",
+            			"##     o   #   #    ##     #",
+            			"###           ##     #     #",
+            			"#        o  ###      #     #",
+            			"#   ####                   #",
+            			"#   ##           ~         #",
+            			"#    #   o             ### #",
+            			"#    #                     #",
             			"############################"];
 
         var grid = ["top left","top middle","top right","bottom left", "bottom middle", "bottom right"];
@@ -110,6 +113,12 @@
 			{
 				return element.originChar;
 			}
+		}
+
+		function dirPlus(dir, n) 
+		{
+  			var index = directionNames.indexOf(dir);
+  			return directionNames[(index + n + 8) % 8];
 		}
 
 		class Grid
@@ -237,6 +246,7 @@
 			turn() 
 			{
 				var acted = [];
+
 				this.grid.forEach(function(critter, vector) 
 					{
 						if (critter.act && acted.indexOf(critter) == -1) 
@@ -327,7 +337,231 @@
 
 		}
 
-		var legend={"#": Wall,"o": BouncingCritter};
+		class WallFollower
+		{
+			constructor()
+			{
+		  		this.dir = "n";
+		  	}
+
+		  	act(view) 
+		  	{
+				var start = this.dir;
+				if (view.look(dirPlus(this.dir, -3)) != " ")
+				{
+					start = this.dir = dirPlus(this.dir, -2);
+				}
+				
+				while (view.look(this.dir) != " ") 
+				{
+					this.dir = dirPlus(this.dir, 1);
+					if (this.dir == start) 
+					{
+						break;
+					}
+				}
+				return {type: "move", direction: this.dir};
+			};
+		}
+
+		class actionTypes 
+		{
+			cosntructor(){}
+
+			grow(critter) 
+			{
+	  			critter.energy += 0.5;
+	  			return true;
+			};
+
+			move(critter, vector, action) 
+			{
+				var dest = this.checkDestination(action, vector);
+				if (dest == null || critter.energy <= 1 || this.grid.get(dest) != null)
+				{
+					return false;
+				}
+				critter.energy -= 1;
+				this.grid.set(vector, null);
+				this.grid.set(dest, critter);
+				return true;
+			};
+
+			eat(critter, vector, action) 
+			{
+				var dest = this.checkDestination(action, vector);
+				var atDest = dest != null && this.grid.get(dest);
+				if (!atDest || atDest.energy == null)
+				{
+					return false;
+				}
+				critter.energy += atDest.energy;
+				this.grid.set(dest, null);
+				return true;
+			};
+
+			reproduce(critter, vector, action) 
+			{
+				var baby = elementFromChar(this.legend,critter.originChar);
+				var dest = this.checkDestination(action, vector);
+				if (dest == null ||	critter.energy <= 2 * baby.energy || this.grid.get(dest) != null)
+				{
+					return false;
+				}
+				critter.energy -= 2 * baby.energy;
+				this.grid.set(dest, baby);
+				return true;
+			};
+		}
+
+		class Plant
+		{
+			constructor()
+			{
+				this.energy = 3 + Math.random() * 4;
+			}
+
+			act(view) 
+			{
+				if (this.energy > 15) 
+				{
+					var space = view.find(" ");
+					if (space)
+					{
+						return {type: "reproduce", direction: space};
+					}
+				}
+				if (this.energy < 20)
+				{
+					return {type: "grow"};
+				}
+			};
+		}
+
+		class SmartPlantEater
+		{
+			constructor()
+			{
+				this.energy = 30;
+				this.direction = "e";
+			}
+
+			act(view) 
+			{
+				var space = view.find(" ");
+				if (this.energy > 90 && space)
+				{
+					return {type: "reproduce", direction: space};
+				}
+				var plants = view.findAll("*");
+				if (plants.length > 1)
+				{
+					return {type: "eat", direction: randomElement(plants)};
+				}
+				if (view.look(this.direction) != " " && space)
+				{
+					this.direction = space;
+				}
+				return {type: "move", direction: this.direction};
+			};
+		}
+			
+		class PlantEater
+		{
+			constructor()
+			{
+  				this.energy = 20;
+  			}
+
+  			act(view) 
+  			{
+				var space = view.find(" ");
+				if (this.energy > 60 && space)
+				{
+					return {type: "reproduce", direction: space};
+				}
+				var plant = view.find("*");
+				if (plant)
+				{
+					return {type: "eat", direction: plant};
+				}
+				if (space)
+				{
+					return {type: "move", direction: space};
+				}
+			};
+		}
+
+		class Tiger
+		{
+			constructor()
+			{
+				this.energy = 100;
+				this.direction = "w";
+				// Used to track the amount of prey seen per turn in the last six turns
+				this.preySeen = [];
+			}
+
+			act(view) 
+			{
+				// Average number of prey seen per turn
+				var seenPerTurn = this.preySeen.reduce(function(a, b) 
+					{
+						return a + b;
+					}, 0) / this.preySeen.length;
+
+				var prey = view.findAll("O");
+				this.preySeen.push(prey.length);
+				// Drop the first element from the array when it is longer than 6
+				if (this.preySeen.length > 6)
+				{
+					this.preySeen.shift();
+				}
+
+				// Only eat if the predator saw more than ¼ prey animal per turn
+				if (prey.length && seenPerTurn > 0.25)
+				{
+					return {type: "eat", direction: randomElement(prey)};
+				}
+				var space = view.find(" ");
+				if (this.energy > 400 && space)
+				{
+					return {type: "reproduce", direction: space};
+				}
+				if (view.look(this.direction) != " " && space)
+				{
+					this.direction = space;
+				}
+				return {type: "move", direction: this.direction};
+			};
+		}
+
+		class LifelikeWorld extends World
+		{
+			constructor(map, legend)
+			{
+				super(map, legend);
+				this.map=map;
+				this.legend=legend;
+			}
+
+			letAct(critter, vector) 
+			{
+				var action = critter.act(new View(this, vector));
+				var handled = action && action.type in actionTypes && actionTypes[action.type].call(this, critter,vector, action);
+				if (!handled) 
+				{
+					critter.energy -= 0.2;
+					if (critter.energy <= 0)
+					{
+						this.grid.set(vector, null);
+					}
+				}
+			};
+		}
+
+
+		var legend={"#": Wall,"o": BouncingCritter,"~": WallFollower};
         var world = new World(plan, legend);
         print("<pre>");
         print(world.toString());
@@ -342,7 +576,7 @@
         print("</div>");
 
         var cont=0;
-        for (var i = 0; i < 1000; i++) 
+        for (var i = 0; i < 500; i++) 
         {
   			setTimeout(function()
   			{
@@ -350,6 +584,55 @@
   				world.turn();
   				document.getElementById("life-container").innerHTML="<pre>"+world.toString()+"</pre>";
   				document.getElementById("contatore").innerHTML="<b> ciclo n\xBA "+cont+"</b>";
+			}, 100+(i*100));
+  			
+		}
+
+		chiudiparagrafo();
+
+		paragrafo("Il mondo con i predatori");
+		
+		var valley = new LifelikeWorld(
+										  ["####################################################",
+										   "#                 ####         ****              ###",
+										   "#   *  @  ##                 ########       OO    ##",
+										   "#   *    ##        O O                 ****       *#",
+										   "#       ##*                        ##########     *#",
+										   "#      ##***  *         ****                     **#",
+										   "#* **  #  *  ***      #########      ~           **#",
+										   "#* **  #      *               #   *              **#",
+										   "#     ##              #   O   #  ***          ######",
+										   "#*            @       #       #   *        O  #    #",
+										   "#*                    #  ######                 ** #",
+										   "###          ****          ***                  ** #",
+										   "#       O                        @    ~    O       #",
+										   "#   *     ##  ##  ##  ##               ###      *  #",
+										   "#   **         #              *       #####  O     #",
+										   "##  **  O   O  #  #    ***  ***        ###      ** #",
+										   "###               #   *****          ~         ****#",
+										   "####################################################"],
+										  {	"#": Wall,
+										   	"@": Tiger,
+										   	"O": SmartPlantEater, // from previous exercise
+										   	"*": Plant,
+											"~": WallFollower}
+										);
+
+
+		print("<div id=\"contatore2\">");
+        print("</div>");
+        print("<div id=\"life-container2\">");
+        print("</div>");
+
+        var cont2=0;
+        for (var i = 0; i < 500; i++) 
+        {
+  			setTimeout(function()
+  			{
+  				cont2++;
+  				valley.turn();
+  				document.getElementById("life-container2").innerHTML="<pre>"+valley.toString()+"</pre>";
+  				document.getElementById("contatore2").innerHTML="<b> ciclo n\xBA "+cont2+"</b>";
 			}, 100+(i*100));
   			
 		}

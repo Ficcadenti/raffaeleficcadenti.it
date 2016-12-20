@@ -1,0 +1,332 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_26.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 12-12-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_26.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"C'&egrave; gente che, di fronte a un problema, pensa 'Ma certo user&ograve; le espressioni<br>
+			regolari'. E si trova di colpo con due problemi."<br>
+		</i>
+		<br>
+		<strong>Jamie Zawinski</strong>
+	</p>
+	<hr>
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
+	<script type="application/x-javascript">
+		"use strict";
+		infoBrowser();
+		function stampaArray(arr)
+        {
+        	print("<pre>");
+        	for(var i=0;i<arr.length;i++)
+        	{
+        		println(arr[i]);
+        	}
+        	print("</pre>");
+        };
+
+
+
+		capitolo("Espressioni regolari");
+		
+		paragrafo("Modificatori");
+
+			var rx=new RegExp("ciao","i");
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			var str="Ciao Raffaele";
+			println(str+" -> "+rx.test(str));	
+
+			console.log("i",rx.ignoreCase);
+			console.log("g",rx.global);
+			console.log("m",rx.multiline);
+
+		chiudiparagrafo();
+
+		paragrafo("Exec");
+		
+			rx=/\d/g;
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			str="Raff1ele2 ciao3";
+			var result=rx.exec(str);
+			console.log(result);
+			while(result!=null)
+			{
+				println(str+" -> "+result+", lastIndex="+rx.lastIndex+", index="+result.index);
+				result=rx.exec(str);
+			}
+
+			println();
+			rx=/\d+/;
+			str="oggi e' il giorno 14/12/2016";
+			var result=rx.exec(str);
+			println(str+" : "+result);
+			println("index : "+result.index);
+			println("lastIndex : "+rx.lastIndex);
+
+			println();
+			rx=/(\d+)/;
+			str="123 456 789 101112";
+			var result=rx.exec(str);
+			println(str+" : "+result);
+			println("index : "+result.index);
+			println("lastIndex : "+rx.lastIndex);	
+
+			println();
+			rx=/cia(o)?/;
+			str="cia";
+			var result=rx.exec(str);
+			println(str+" : "+result);
+			println("index : "+result.index);
+			println("lastIndex : "+rx.lastIndex);	
+
+			println();
+			rx=/(\d)+/;
+			str="123456789101112";
+			var result=rx.exec(str);
+			println(str+" : "+result);
+			println("source : "+rx.source);
+			println("index : "+result.index);
+			println("lastIndex : "+rx.lastIndex);
+
+			println();
+			rx=/Raffaele/g;
+			str="Ciao Raffaele";
+			
+			var result=rx.exec(str);
+			if(result!=null)
+			{
+				println(str+" : "+result);
+				println("source : "+rx.source);
+				println("index : "+result.index);
+				println("lastIndex : "+rx.lastIndex);				
+			}
+			else 
+			{
+				println("NON TROVATO!!!!");
+			}
+
+			var result=rx.exec(str);
+			if(result!=null)
+			{
+				println(str+" : "+result);
+				println("source : "+rx.source);
+				println("index : "+result.index);
+				println("lastIndex : "+rx.lastIndex);				
+			}
+			else 
+			{
+				println("NON TROVATO!!!!");
+				println("hai visto??? lastIndex &egrave; stato modificato dall'exec precedente...");
+			}
+
+
+			println();
+			str = "Una stringa con 3 numeri in essa ... 42 e 88.";
+			rx = /\b(\d+)\b/g;
+			var result1;
+			println(str);
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			while (result1 = rx.exec(str))
+			{
+				println("Trovato numero "+result1[1]+" alla posizione "+result1.index);
+			}
+			
+
+
+		chiudiparagrafo();
+
+		paragrafo("Stringhe: search, replace, split e match");
+			
+			println("<b>search</b>");
+			rx=/icca/gi;
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			str="Raffaele Ficcadenti";
+			result=str.search(rx);
+			println(str+" index="+result);
+
+			println("<b><br>split</b>");
+			rx=/ /gi;
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			str="Raffaele Ficcadenti raffaele.ficcadenti@gmail.com";
+			result=str.split(rx);
+			println(str+" :"+result);
+
+			println("<b><br>replace</b>");
+			rx=/ /gi;
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			str="Raffaele Ficcadenti raffaele.ficcadenti@gmail.com";
+			result=str.replace(rx,"[spazio]");
+			println(str+"  ----> "+result);
+
+			println();
+			rx=/([\w ]+), ?([\w ]+)/g;
+			str="Ficcadenti,Raffaele\nGreco,Valeria\nGreco,Francesco";
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			result=str.replace(rx,"$2 $1");
+			println(str+"  ----> "+result);
+
+			result=str.replace(rx,function(a,b,c){
+				return "<br>["+c+" "+b+"]";
+			});
+			println(result);
+
+			println();
+			var magazzino = "1 fusaja, 10 ceci, and 101 pinoli";
+			function decrementaDiUno(match, val, prodotto) 
+			{
+			  	val = Number(val) - 1;
+			  	if (val == 1) // only one left, remove the 's'
+			  	{
+			    	prodotto = prodotto.slice(0, prodotto.length - 1);
+			  	}
+			  	else if (val == 0)
+			  	{
+			    	val = "finito";
+			  	}
+			  	return val + " " + prodotto;
+			  	//console.log("match=",match, "val=",val, "prodotto=",prodotto);
+			}
+			println(magazzino);
+			println("<b>decrementaDiUno</b>");
+			println(magazzino.replace(/(\d+) (\w+)/g, decrementaDiUno));
+
+
+			println();
+			function stripComments(code) 
+			{
+ 				return code.replace(/\/\/.*|\/\*[^]*?\*\//g, "");
+			}
+
+			str="/* commento1 */ ciao /* commento 2 */";
+			println(str);
+			println("<b>stripComments</b>");
+			println(stripComments(str));
+
+			println();
+			function sottolinea(match) 
+			{
+			  	return "<u>"+match+"</u>";
+			}
+			function bold(match) 
+			{
+			  	return "<b>"+match+"</b>";
+			}
+			var nome="raffa[]ele";
+			var cognome="FICC?^.ADENTI";
+			var escaped = nome.replace(/[^\w\s]/g, "\\$&");
+
+			rx=new RegExp("\\b"+escaped+"\\b","gi");
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			str="raffa[]ele ficc?^.adenti";
+			println(str);
+			println("<b>sottolinea</b>");
+			println(str.replace(rx,sottolinea));
+
+			println();
+			var escaped = cognome.replace(/[^\w\s]/g, "\\$&");
+			rx=new RegExp("\\b"+escaped+"\\b","gi");
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			println(str);
+			println("<b>bold</b>");
+			println(str.replace(rx,bold));
+
+
+
+
+
+			println("<b><br>match</b>");
+			rx=/[A-z]+/;
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			str="Raffaele Ficcadenti raffaele.ficcadenti@gmail.com";
+			result=str.match(rx);
+			println(str+" :"+result);
+			rx=/[A-z]+/gi;
+			println("Espressione regolare <b>rx="+rx+"</b>");
+			result=str.match(rx);
+			println(str+" :"+result);
+
+
+		chiudiparagrafo();
+			
+		paragrafo("Codice fiscale");
+			var codiceFiscale = /\b[a-z]{6}\d{2}[abcdehlmprst]\d{2}[a-z]\d{3}[a-z]/i;
+			var cf="FCCRFL76M14H501C";
+
+			if(codiceFiscale.test(cf))
+			{
+				println("il codice fiscale '"+cf+"' &egrave; valido");
+			}
+			else
+			{
+				println("il codice fiscale '"+cf+"' non &egrave; valido");
+			}
+
+		chiudiparagrafo();
+
+		paragrafo("e-mail");
+			var email = /\w+@\w+\.\w{2,4}/i
+			var em="raffaele.ficcadenti@gmail.com";
+
+			if(email.test(em))
+			{
+				println("l'e-mail '"+em+"' &egrave; valida");
+			}
+			else
+			{
+				println("l'e-mail '"+em+"' non &egrave; valida");
+			}
+		chiudiparagrafo();
+
+		paragrafo("Indirizzo IP");
+			var ip = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
+			var valore="168.234.123.1";
+
+			if(ip.test(valore))
+			{
+				println("IP '"+valore+"' &egrave; valido");
+			}
+			else
+			{
+				println("IP '"+valore+"' non &egrave; valido");
+			}
+		chiudiparagrafo();
+		
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank">w3schools<span class="dotcom">.com</span> - JavaScript RegExp Reference</a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a><br>
+		<a href="https://regex101.com/" target="_blank">Regular expression</a><br>
+		<a href="https://www.debuggex.com/" target="_blank">Debuggex</a><br>
+		
+		
+	</div>
+
+</body>
+</hmtl>

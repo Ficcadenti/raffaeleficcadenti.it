@@ -1,0 +1,136 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_27.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 12-12-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_27.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"C'&egrave; gente che, di fronte a un problema, pensa 'Ma certo user&ograve; le espressioni<br>
+			regolari'. E si trova di colpo con due problemi."<br>
+		</i>
+		<br>
+		<strong>Jamie Zawinski</strong>
+	</p>
+	<hr>
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
+	<script type="application/x-javascript">
+		"use strict";
+		infoBrowser();
+
+		var fileINI="searchengine=http://www.google.com/search?q=$1\r\nspitefulness=9.7\r\n\r\n; comments are preceded by a semicolon...\r\n; each section concerns an individual enemy\r\n[larry]\r\nfullname=Larry Doe\r\ntype=kindergarten bully\r\nwebsite=http://www.geocities.com/CapeCanaveral/11451\r\n\r\n[gargamel]\r\nfullname=Gargamel\r\ntype=evil sorcerer\r\noutputdir=/home/marijn/enemies/gargamel\r\n";
+
+		function parseINI(string)
+		{
+			var rx=/\r?\n/g;
+			var sezioneCorrente={
+					nome: null,
+					campi: []
+				};
+			var categorie=[sezioneCorrente];
+
+
+			fileINI.split(rx).forEach(function(line,pos){
+					var match;
+
+					if (/^\s*(;.*)?$/.test(line)) 
+					{
+						println(line);
+	      				return;
+	    			}
+	    			else if (match = line.match(/^\[(.*)\]$/)) 
+	    			{
+	      				sezioneCorrente = {nome: match[1], campi: []};
+	      				categorie.push(sezioneCorrente);
+	    			} 
+	    			else if (match = line.match(/^(\w+)=(.*)$/)) 
+	    			{
+	      				sezioneCorrente.campi.push({nome: match[1],campi: match[2]});
+	    			}
+	    			else 
+	    			{
+	      				throw new Error("Linea '" + line + "' non valida.");
+	    			}
+				});
+
+			return categorie;
+		}
+
+
+
+		capitolo("Espressioni regolari");
+
+		paragrafo("Analizzare un file INI");
+
+		println("<b>File INI</b>");
+		var rx=/\r?\n/g;
+		println(fileINI.replace(rx,"<br>"));
+
+		try 
+		{
+			var obj=parseINI(fileINI);
+			
+
+			console.log(obj);
+			for(var i=0;i<obj.length;i++)
+			{
+				if(obj[i].nome!=null)
+				{
+					println("["+obj[i].nome.toUpperCase()+"]");
+				}
+				else
+				{
+					println("[GLOBAL]");	
+				}
+				for(var j=0;j<obj[i].campi.length;j++)
+				{
+					var tmp=obj[i].campi[j];
+					println(tmp.nome+" = "+tmp.campi);
+				}
+			}
+		}
+		catch(e) 
+		{
+			console.log(e);
+		}
+
+
+
+
+		chiudiparagrafo();
+		
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank">w3schools<span class="dotcom">.com</span> - JavaScript RegExp Reference</a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a><br>
+		<a href="https://regex101.com/" target="_blank">Regular expression</a><br>
+		
+	</div>
+
+</body>
+</hmtl>

@@ -1,0 +1,74 @@
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_23b.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 30-11-2016    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<title>sorgente: esempio_23b.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<body>	
+	<p>
+		<i>
+			"Il debugging &egrave; due volte pi&ugrave; difficile di scrivere il codice. Pertanto, se<br>
+			scrivete codice sfruttando al massimo le vostre capacit&agrave;, per definizione<br>
+			non siete abbastanza intelligenti per fare il debugging."<br>
+		</i>
+		<br>
+		<strong>Brian Kernighan e P.J Plauger</strong><i> The Elements of Programming Style</i>
+	</p>
+	<hr>
+
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_error.js"></script>
+	<script type="application/x-javascript">
+		"use strict";
+
+		infoBrowser();
+		capitolo("Gestione degli errori");
+		
+		paragrafo("Asserzioni");
+			
+			function lastElement(array) 
+			{
+  				assert(array.length > 0, "Array vuoto in lastElement");
+  				return array[array.length - 1];
+			}
+
+			var arr=[1,2,3,4];
+			println("lastElement["+arr.join(";")+"]="+lastElement(arr));
+
+			var arr1=[];
+			println("lastElement["+arr1.join(";")+"]="+lastElement(arr1));
+
+		chiudiparagrafo();
+
+	</script>
+
+	<hr>
+	<div id="info">
+		<h1>Info</h1>
+		<a href="http://www.w3schools.com/js/default.asp" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
+		<a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br>
+		<a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a><br>
+		
+	</div>
+
+</body>
+</hmtl>

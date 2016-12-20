@@ -117,4 +117,12 @@ function infoObj(obj)
 	println("-------------------------------------------------");
 }
 
-
+function stampaArray(arr)
+{
+	print("<pre>");
+	for(var i=0;i<arr.length;i++)
+	{
+		println(arr[i]);
+	}
+	print("</pre>");
+};
