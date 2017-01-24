@@ -102,6 +102,11 @@
         include("components/progetti.php");
       ?>
 
+      <!-- ultimi lavori -->
+      <?php
+        include("components/ultimo_lavoro.php");
+      ?>
+
       <!-- under costruction -->
       <?php
         include("components/undercostruction.php");

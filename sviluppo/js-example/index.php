@@ -143,6 +143,24 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				<ul>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-09 - Moduli/esempio_29.html" target="_blank">esempio_29.html</a></b>: Esempio.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-09 - Moduli/esempio_30.html" target="_blank">esempio_30.html</a></b>: Eval.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 10</strong> - Un linguaggio di programmazione.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Un linguaggio di programmazione/esempio_31.html" target="_blank">esempio_31.html</a></b>: Egg.</li>
+					<br>
+				</ul>
+			</li>
+
+			<li><strong>LEZIONE N. 11</strong> - Il browser.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-11 - Il browser/esempio_32.html" target="_blank">esempio_32.html</a></b>: Introduzione.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-11 - Il browser/esempio_33.html" target="_blank">esempio_33.html</a></b>: Il modello a oggetti del documento: DOM.</li>
 					<br>
 				</ul>
 			</li>

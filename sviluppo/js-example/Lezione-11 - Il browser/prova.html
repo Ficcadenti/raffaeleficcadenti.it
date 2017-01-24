@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_33.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 04-01-2017    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>sorgente: esempio_33.html</title>
+		<!-- Sezione per i CSS -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+	</head>
+
+	<header>
+		<p>
+			<i>
+				Il browser è un ambiente di programmazione davvero ostile.<br>
+			</i>
+			<br>
+			<strong>Douglas Crockford</strong><i> The JavaScript Programming Language</i>
+		</p>
+		<hr>
+	</header>
+
+	<body>
+		<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+		<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
+		<script type="application/x-javascript" src="../assets/lib/modernizr-custom.js"></script>
+
+		<p>An unordered list:</p>
+		<ul>
+		  <li>Coffee</li>
+		  <li>Tea</li>
+		  <li>Milk</li>
+		</ul>
+
+		<p>Click the button to display the innerHTML of the second li element (index 1).</p>
+
+		<p>One</p>
+		<p>Two</p>
+		<p>Three</p>
+
+
+		<button onclick="myFunction()">Try it</button>
+
+		<p id="demo"></p>
+
+		<script>
+		function myFunction() {
+		    var x = document.getElementsByTagName("li");
+		    document.getElementById("demo").innerHTML = x[1].innerHTML;
+		}
+
+		var paragraphs = document.body.getElementsByTagName("p");
+			for(var i=0;i<paragraphs.length;i++)
+				println(paragraphs[i].innerHTML);
+
+			var newItem = document.createElement("p");       // Create a <p> node
+			var textnode = document.createTextNode("Water");  // Create a text node
+			newItem.appendChild(textnode); 
+
+			document.getElementById("demo").innerHTML=newItem.innerHTML;
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_31.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 03-01-2017    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<meta charset="UTF-8">
+	<title>sorgente: esempio_31.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<header>
+	<p>
+		<i>
+			L'interprete, che stabilische il significato delle espressioni in un linguaggio<br>
+			di programmazione, è solo un altro programma.<br>
+		</i>
+		<br>
+		<strong>Hal Abelson e Gerald Sussman</strong><i> Structure and Interpretation of Computer Programs</i>
+	</p>
+	<hr>
+</header>
+
+
+<body>	
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/modernizr-custom.js"></script>
+	<script type="application/x-javascript">
+		//"use strict";
+		infoBrowser();
+
+		console.log( Modernizr );
+
+		if (Modernizr.video) 
+		{
+			println("video supportato");
+		}
+		else 
+		{
+			println("Mancato supporto: applicazione di strategie alternative");
+		}
+
+		if (Modernizr.canvas) 
+		{
+			println("canvas supportato");
+		} else 
+		{
+			println("canvas NON supportato");
+		}
+
+		capitolo("Un linguaggio di programmazione");
+		paragrafo("Il linguaggio Egg.");
+
+		function skipSpace(string) 
+		{
+			var first = string.search(/\S/);
+		 	if (first == -1)
+		 	{
+		 		return "";
+		 	}
+			return string.slice(first);
+		}
+
+		function parseExpression(program) 
+		{
+			program = skipSpace(program);
+			var match, expr;
+			
+			if (match = /^"([^"]*)"/.exec(program))
+			{
+				expr = {
+					type: "value", 
+					value: match[1]
+				};
+			}
+			else if (match = /^\d+\b/.exec(program))
+			{
+				expr = {
+					type: "value", 
+					value: Number(match[0])
+				};
+			}
+			else if (match = /^[^\s(),"]+/.exec(program))
+			{
+				expr = {
+					type: "word", 
+					name: match[0]
+				};
+			}
+			else
+			{
+				throw new SyntaxError("Unexpected syntax: " + program);
+			}
+			return parseApply(expr, program.slice(match[0].length));
+		}
+
+		function parseApply(expr, program) 
+		{
+			program = skipSpace(program);
+			if (program[0] != "(")
+			{
+				return {expr: expr, rest: program};
+			}
+
+			program = skipSpace(program.slice(1));
+			expr = {
+					type: "apply", 
+					operator: expr, 
+					args: []
+				};
+
+			while (program[0] != ")") 
+			{
+				var arg = parseExpression(program);
+				expr.args.push(arg.expr);
+				program = skipSpace(arg.rest);
+
+				if (program[0] == ",")
+				{
+					program = skipSpace(program.slice(1));
+				}
+				else if (program[0] != ")")
+				{
+					throw new SyntaxError("Expected ',' or ')'");
+				}
+			}
+			return parseApply(expr, program.slice(1));
+		}
+
+		function parse(program) 
+		{
+			var result = parseExpression(program);
+			if (skipSpace(result.rest).length > 0)
+			{
+				throw new SyntaxError("Unexpected text after program");
+			}
+			return result.expr;
+		}
+
+		function evaluate(expr, env) 
+		{
+			switch(expr.type) 
+			{
+				case "value":
+				{
+					return expr.value;
+				}
+
+				case "word":
+				{
+					if (expr.name in env)
+					{
+						return env[expr.name];
+					}
+					else
+					{
+						throw new ReferenceError("Undefined variable: " + expr.name);
+					}
+				}
+				
+				case "apply":
+				{
+					if (expr.operator.type == "word" && expr.operator.name in specialForms)
+					{
+						return specialForms[expr.operator.name](expr.args,env);
+					}
+
+					var op = evaluate(expr.operator, env);
+
+					if (typeof op != "function")
+					{
+						throw new TypeError("Applying a non-function.");
+					}
+
+					return op.apply(null, expr.args.map(function(arg) 
+						{
+							return evaluate(arg, env);
+						})
+					);
+				}
+			}
+		}
+
+		var specialForms = Object.create(null);
+
+
+		stampaObj("Egg",parse("+(a, 10)"));
+
+		var str="  raffaele   ";
+		println("["+str+"]");
+		println("["+skipSpace(str)+"]");
+
+		chiudiparagrafo();		
+	</script>
+</body>
+
+<footer>
+	<nav>
+		<hr>
+		<h1>Info</h1>
+		<ul>
+			<li><a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank">w3schools<span class="dotcom">.com</span> - JavaScript RegExp Reference</a><br></li>
+			<li><a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br></li>
+			<li><a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a><br></li>
+			<li><a href="https://regex101.com/" target="_blank">Regular expression</a><br></li>
+		</ul>
+	</nav>
+</footer>
+
+</body>
+</hmtl>

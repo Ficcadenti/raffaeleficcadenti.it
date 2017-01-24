@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+	# 
+	# MODULE DESCRIPTION:
+	# esempio_32.html
+	# 
+	# 
+	# AUTHORS:
+	# Author Name		Raffaele Ficcadenti
+	# Author email		raffaele.ficcadenti@gmail.com
+	# 
+	# 
+	# HISTORY:
+	# -[Date]-      -[Who]-               -[What]-
+	# 04-01-2017    Ficcadenti Raffaele         
+	# -
+-->
+
+<hmtl>
+
+<head>
+	<meta charset="UTF-8">
+	<title>sorgente: esempio_32.html</title>
+	<!-- Sezione per i CSS -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
+</head>
+
+<header>
+	<p>
+		<i>
+			Il browser è un ambiente di programmazione davvero ostile.<br>
+		</i>
+		<br>
+		<strong>Douglas Crockford</strong><i> The JavaScript Programming Language</i>
+	</p>
+	<hr>
+</header>
+
+
+<body>	
+	<script type="application/x-javascript" src="../assets/lib/my_scripts.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
+	<script type="application/x-javascript" src="../assets/lib/modernizr-custom.js"></script>
+	<script type="application/x-javascript">
+		//"use strict";
+		infoBrowser();
+
+		console.log( Modernizr );
+
+		if (Modernizr.video) 
+		{
+			println("video supportato");
+		}
+		else 
+		{
+			println("Mancato supporto: applicazione di strategie alternative");
+		}
+
+		if (Modernizr.canvas) 
+		{
+			println("canvas supportato");
+		} else 
+		{
+			println("canvas NON supportato");
+		}
+
+		capitolo("Il browser");
+
+		
+
+		chiudiparagrafo();
+
+		function f1(str)
+		{
+			alert(str);
+			console.log(str);
+		}		
+	</script>
+
+	<button onclick="f1('ciao')";">Premi il bottone</button>
+</body>
+
+<footer>
+	<nav>
+		<hr>
+		<h1>Info</h1>
+		<ul>
+			<li><a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank">w3schools<span class="dotcom">.com</span> - JavaScript RegExp Reference</a><br></li>
+			<li><a href="http://html5index.org/index.html" target="_blank">The HTML 5 JavaScript API Index</a><br></li>
+			<li><a href="http://es6-features.org/#Constants" target="_blank">ECMAScript 6</a><br></li>
+			<li><a href="https://regex101.com/" target="_blank">Regular expression</a><br></li>
+		</ul>
+	</nav>
+</footer>
+
+</body>
+</hmtl>

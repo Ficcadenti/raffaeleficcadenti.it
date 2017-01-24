@@ -2,7 +2,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_29.html
+	# esempio_30.html
 	# 
 	# 
 	# AUTHORS:
@@ -12,7 +12,7 @@
 	# 
 	# HISTORY:
 	# -[Date]-      -[Who]-               -[What]-
-	# 12-12-2016    Ficcadenti Raffaele         
+	# 03-01-2017    Ficcadenti Raffaele         
 	# -
 -->
 
@@ -20,7 +20,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>sorgente: esempio_29.html</title>
+	<title>sorgente: esempio_30.html</title>
 	<!-- Sezione per i CSS -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/default.css">
 </head>
@@ -54,7 +54,7 @@
 	<script type="application/x-javascript" src="../assets/lib/my_vector.js"></script>
 	<script type="application/x-javascript" src="../assets/lib/modernizr-custom.js"></script>
 	<script type="application/x-javascript">
-		"use strict";
+		//"use strict";
 		infoBrowser();
 
 		console.log( Modernizr );
@@ -78,79 +78,22 @@
 
 		capitolo("Moduli");
 
-		paragrafo("Spazio dei nomi.");
+		paragrafo("Eval.");
 
-		var names = ["Lunedi", "Martedi", "Mercoledi", "Giovedi","Venerdi", "Sabato", "Domenica"];
-		
-		function dayName(number) 
+		function evalCode(code)
 		{
-  			return names[number];
+			eval(code);
+			return x;
 		}
 
-		var dayName1 = function() 
-		{
-			var names = ["Lunedi", "Martedi", "Mercoledi", "Giovedi","Venerdi", "Sabato", "Domenica"];
-			return function(number) 
-			{
-				return names[number];
-			};
-		}();
+		println(evalCode("var x=2"));
 
-		println(dayName(0));
-		
-		println(dayName1(0));
+		//var piuUno=new function("n","return n+1;");
+		//println(piuUno(5));
 
-		(function() 
-			{
-	  			function square(x) { return x * x; }
-	  			var hundred = 100;
-				println("x^2 = "+square(hundred));
-			}
-		)();
-
-		var weekDay = function() 
-		{
-			var names = ["Lunedi", "Martedi", "Mercoledi", "Giovedi","Venerdi", "Sabato", "Domenica"];
-			return {
-					name: function(number) { return names[number]; },
-					number: function(name) { return names.indexOf(name); }
-				};
-		}();
-			
-		println(weekDay.number("Mercoledi"));
-		println(weekDay.name(weekDay.number("Mercoledi")));
-
-
-		var f=function(exports) 
-		{
-		  var names = ["Lunedi", "Martedi", "Mercoledi", "Giovedi","Venerdi", "Sabato", "Domenica"];
-
-		  exports.name = function(number) {
-		    return names[number];
-		  };
-		  exports.number = function(name) {
-		    return names.indexOf(name);
-		  };
-		}(this.weekDay1={});
-
-		
-		println(weekDay1.number("Mercoledi"));
-		println(weekDay1.name(weekDay1.number("Mercoledi")));
-
-		var f1=function(x)
-		{
-			var names = ["Lunedi", "Martedi", "Mercoledi", "Giovedi","Venerdi", "Sabato", "Domenica"];
-			return 1;
-		}(this.weekDay2={});
-
-		console.log(f1);
-
-		if (Modernizr.queryselector) 
-		{
-		  // supported
-		} else {
-		  // not-supported
-		}
+		var plusOne = new Function("n", "return n + 1;");
+		console.log(plusOne(4));
+		// → 5
 
 		chiudiparagrafo();		
 	</script>
