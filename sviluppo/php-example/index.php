@@ -137,6 +137,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Database MySQL/esempio_21.php" target="_blank">esempio_21.php</a></b>: Utilizzo di MySQLi.</li>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Database MySQL/esempio_22.php" target="_blank">esempio_22.php</a></b>: Ottenere informazioni su un database.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Database MySQL/esempio_22a.php" target="_blank">esempio_22a.php</a></b>: Utilizzo di ADODB.</li>
 					<br>
 				</ul>
 			</li>
@@ -241,6 +242,13 @@ http://www.w3.org/TR/html4/frameset.dtd>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-22 - PHP e JSON/esempio_53.php" target="_blank">esempio_53.php</a></b>: Encode & Decode.</li>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-22 - PHP e JSON/esempio_54.php" target="_blank">esempio_54.php</a></b>: Gestione degli errori.</li>
+					<br>
+				</ul>
+			</li>
+			<li><strong>LEZIONE N. 23</strong> - Google API.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-23 - Google API/esempio_60.php" target="_blank">esempio_60.php</a></b>: Iniziamo ad usare le Goggle API Maps.</li>
 					<br>
 				</ul>
 			</li>

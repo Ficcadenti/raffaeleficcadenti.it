@@ -1,4 +1,5 @@
-USE `Sql981244_2`;
+CREATE DATABASE  IF NOT EXISTS `phpexample` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `phpexample`;
 
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --

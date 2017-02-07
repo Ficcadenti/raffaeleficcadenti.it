@@ -137,6 +137,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_22.php</b>: Ottenere informazioni su un database.</li>
 			<br>
+			<li><b>esempio_22a.php</b>: Utilizzo di ADODB.</li>
+			<br>
 		</ul>
 	</li>
 	<li><strong>LEZIONE N. 11</strong> - Apertura al mondo esterno.
@@ -260,6 +262,13 @@ Raffaele.
 			<li><b>esempio_53.php</b>: Encode & Decode.</li>
 			<br>
 			<li><b>esempio_54.php</b>: Gestione degli errori.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 23</strong> - Google API.
+		<ul>
+			<br>
+			<li><b>esempio_60.php</b>: Iniziamo ad usare le Goggle API Maps.</li>
 			<br>
 		</ul>
 	</li>

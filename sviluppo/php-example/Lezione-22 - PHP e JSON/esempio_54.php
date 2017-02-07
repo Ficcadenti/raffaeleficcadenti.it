@@ -141,6 +141,15 @@
 			}
 
 			print("</div>\n");
+
+$re = '/raffael[aA]/';
+$str = 'raffaela raffaeleA';
+
+preg_match_all($re, $str, $matches);
+
+// Print the entire match result
+print_r($matches);
+
 		?>
 		
 		<?php
@@ -149,6 +158,7 @@
 
 		<img src="./pleasewait.gif" alt="pleasewait" height="13" width="280"><br> 
 		<a href="http://www.json.org/json-it.html" target="_blank">JSON</a><br>
+		<a href="http://jsonlint.com/" target="_blank">The JSON Validator </a><br>
 		<a href="http://php.net/manual/en/book.json.php" target="_blank">PHP json</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
